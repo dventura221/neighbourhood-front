@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import RegisterForm from '../components/RegisterForm'
 //import { useNavigate } from 'react-router-dom'
 
@@ -25,14 +25,14 @@ const SignIn = () => {
   }
 
   return (
-    <div className="signIn">
-      <h1>Sign In!</h1>
-      <div className="signInGrid">
-        <form className="signInForm" onSubmit={handleSubmit}>
+    <div className="GridContainer">
+      <div className="LoginGrid">
+        <form className="LoginForm" onSubmit={handleSubmit}>
+          <h1>Sign In</h1>
           <input
             required
             type="text"
-            name="User Name"
+            name="userName"
             value={signInValues.userName}
             placeholder="User Name"
             onChange={handleChange}
@@ -40,7 +40,7 @@ const SignIn = () => {
           <input
             required
             type="text"
-            name="Password"
+            name="password"
             value={signInValues.password}
             placeholder="Password"
             onChange={handleChange}
@@ -49,9 +49,9 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
-      </div>
-      <div className="registerUser">
-        <RegisterForm />
+        <div className="RegisterForm">
+          <RegisterForm />
+        </div>
       </div>
     </div>
   )
