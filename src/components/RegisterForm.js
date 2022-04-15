@@ -15,10 +15,10 @@ const RegisterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // axios
-    // .post(`http://localhost:3001/players`, addPlayer)
-    // .then((res) => console.log('successful'))
-    // .catch((err) => console.log(err.data))
+    axios
+      .post(`http://localhost:3001/user/new`, regUser)
+      .then((res) => console.log('successful'))
+      .catch((err) => console.log(err.data))
     setRegUser({
       firstName: '',
       lastName: '',
@@ -31,6 +31,10 @@ const RegisterForm = () => {
     // ADD useNAV to LogIn Page
   }
 
+  const handleChange = (e) => {
+    setRegUser({ ...regUser, [e.target.name]: e.target.value })
+  }
+
   return (
     <div className="registerUser">
       <h1>Register New User</h1>
@@ -41,9 +45,7 @@ const RegisterForm = () => {
           name="First Name"
           value={regUser.firstName}
           placeholder="First Name"
-          onChange={(e) =>
-            setRegUser({ ...regUser, firstName: e.target.value })
-          }
+          onChange={handleChange}
         ></input>
         <input
           required
@@ -51,7 +53,7 @@ const RegisterForm = () => {
           name="Last Name"
           value={regUser.lastName}
           placeholder="Last Name"
-          onChange={(e) => setRegUser({ ...regUser, lastName: e.target.value })}
+          onChange={handleChange}
         ></input>
         <input
           required
@@ -59,14 +61,14 @@ const RegisterForm = () => {
           name="Zip Code"
           value={regUser.zipcode}
           placeholder="Zip Code"
-          onChange={(e) => setRegUser({ ...regUser, zipcode: e.target.value })}
+          onChange={handleChange}
         ></input>
         <input
           type="number"
           name="Age"
           value={regUser.age}
           placeholder="Age"
-          onChange={(e) => setRegUser({ ...regUser, age: e.target.value })}
+          onChange={handleChange}
         ></input>
         <input
           required
@@ -74,7 +76,7 @@ const RegisterForm = () => {
           name="User Name"
           value={regUser.userName}
           placeholder="User Name"
-          onChange={(e) => setRegUser({ ...regUser, userName: e.target.value })}
+          onChange={handleChange}
         ></input>
         <input
           required
@@ -82,14 +84,14 @@ const RegisterForm = () => {
           name="Password"
           value={regUser.password}
           placeholder="Password"
-          onChange={(e) => setRegUser({ ...regUser, password: e.target.value })}
+          onChange={handleChange}
         ></input>
         <input
           type="text"
           name="Avatar"
           value={regUser.avatar}
           placeholder="Avatar"
-          onChange={(e) => setRegUser({ ...regUser, avatar: e.target.value })}
+          onChange={handleChange}
         ></input>
         <button className="submitButton" text="Submit">
           Register

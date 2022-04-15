@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import RegisterForm from '../components/RegisterForm'
 //import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
@@ -49,7 +50,9 @@ const SignIn = () => {
           </button>
         </form>
       </div>
-      <div className="registerUser"></div>
+      <div className="registerUser">
+        <RegisterForm />
+      </div>
     </div>
   )
 }

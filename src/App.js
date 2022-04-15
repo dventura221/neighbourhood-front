@@ -1,8 +1,9 @@
 import './styles/App.css'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
-import RegisterForm from './components/RegisterForm'
+//import RegisterForm from './components/RegisterForm'
 import SignIn from './pages/SignIn'
+import StreetForm from './components/StreetForm'
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       </header>
       <main>
         <SignIn />
-        <RegisterForm />
+        <StreetForm />
         {/* <Routes>
           <Route path="/signin" element={<SignInPage />} />
         </Routes> */}
