@@ -3,13 +3,15 @@ import axios from 'axios'
 //import { useNavigate } from 'react-router-dom'
 
 const RegisterForm = () => {
+  //let navigate = useNavigate()
+
   const [regUser, setRegUser] = useState({
     firstName: '',
     lastName: '',
-    zipcode: undefined,
-    age: undefined,
+    zipcode: '',
+    age: '',
     userName: '',
-    password: '',
+    passwordDigest: '',
     avatar: ''
   })
 
@@ -22,10 +24,10 @@ const RegisterForm = () => {
     setRegUser({
       firstName: '',
       lastName: '',
-      zipcode: undefined,
-      age: undefined,
+      zipcode: '',
+      age: '',
       userName: '',
-      password: '',
+      passwordDigest: '',
       avatar: ''
     })
     // ADD useNAV to LogIn Page
@@ -42,7 +44,7 @@ const RegisterForm = () => {
         <input
           required
           type="text"
-          name="First Name"
+          name="firstName"
           value={regUser.firstName}
           placeholder="First Name"
           onChange={handleChange}
@@ -50,7 +52,7 @@ const RegisterForm = () => {
         <input
           required
           type="text"
-          name="Last Name"
+          name="lastName"
           value={regUser.lastName}
           placeholder="Last Name"
           onChange={handleChange}
@@ -58,14 +60,14 @@ const RegisterForm = () => {
         <input
           required
           type="number"
-          name="Zip Code"
+          name="zipcode"
           value={regUser.zipcode}
           placeholder="Zip Code"
           onChange={handleChange}
         ></input>
         <input
           type="number"
-          name="Age"
+          name="age"
           value={regUser.age}
           placeholder="Age"
           onChange={handleChange}
@@ -73,7 +75,7 @@ const RegisterForm = () => {
         <input
           required
           type="text"
-          name="User Name"
+          name="userName"
           value={regUser.userName}
           placeholder="User Name"
           onChange={handleChange}
@@ -81,14 +83,14 @@ const RegisterForm = () => {
         <input
           required
           type="text"
-          name="Password"
-          value={regUser.password}
+          name="passwordDigest"
+          value={regUser.passwordDigest}
           placeholder="Password"
           onChange={handleChange}
         ></input>
         <input
           type="text"
-          name="Avatar"
+          name="avatar"
           value={regUser.avatar}
           placeholder="Avatar"
           onChange={handleChange}
