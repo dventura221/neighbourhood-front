@@ -12,7 +12,7 @@ function App() {
       </header>
       <main>
         <SignIn />
-        <RegisterForm />
+
         {/* <Routes>
           <Route path="/signin" element={<SignInPage />} />
         </Routes> */}

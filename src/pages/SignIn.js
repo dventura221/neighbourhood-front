@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import RegisterForm from '../components/RegisterForm'
 //import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
@@ -24,10 +25,10 @@ const SignIn = () => {
   }
 
   return (
-    <div className="signIn">
-      <h1>Sign In!</h1>
-      <div className="signInGrid">
-        <form className="signInForm" onSubmit={handleSubmit}>
+    <div>
+      <div className="LoginGrid">
+        <h1>Sign In</h1>
+        <form className="LoginForm" onSubmit={handleSubmit}>
           <input
             required
             type="text"
@@ -48,8 +49,10 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
+        <div className="RegisterForm">
+          <RegisterForm />
+        </div>
       </div>
-      <div className="registerUser"></div>
     </div>
   )
 }
