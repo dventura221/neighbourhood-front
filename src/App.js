@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 //import RegisterForm from './components/RegisterForm'
 import SignIn from './pages/SignIn'
 import StreetForm from './components/StreetForm'
+import StreetFeed from './pages/StreetFeed'
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       </header>
       <main>
         <SignIn />
-        {/* <StreetForm /> */}
+        <StreetForm />
+        <StreetFeed />
         {/* <Routes>
           <Route path="/signin" element={<SignInPage />} />
         </Routes> */}

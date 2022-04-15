@@ -5,7 +5,9 @@
 const StreetPost = (props) => {
   return (
     <div>
-      <h3>Street</h3>
+      <h3>A Street</h3>
+      <h4>Author {props.authorId}</h4>
+      <p>Content {props.content}</p>
     </div>
   )
 }
