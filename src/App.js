@@ -2,6 +2,7 @@ import './styles/App.css'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import RegisterForm from './components/RegisterForm'
+import SignIn from './pages/SignIn'
 
 function App() {
   return (
@@ -10,9 +11,10 @@ function App() {
         <NavBar />
       </header>
       <main>
+        <SignIn />
         <RegisterForm />
         {/* <Routes>
-          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/signin" element={<SignInPage />} />
         </Routes> */}
       </main>
     </div>

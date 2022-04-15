@@ -19,6 +19,15 @@ const RegisterForm = () => {
     // .post(`http://localhost:3001/players`, addPlayer)
     // .then((res) => console.log('successful'))
     // .catch((err) => console.log(err.data))
+    setRegUser({
+      firstName: '',
+      lastName: '',
+      zipcode: undefined,
+      age: undefined,
+      userName: '',
+      password: '',
+      avatar: ''
+    })
     // ADD useNAV to LogIn Page
   }
 
@@ -82,6 +91,9 @@ const RegisterForm = () => {
           placeholder="Avatar"
           onChange={(e) => setRegUser({ ...regUser, avatar: e.target.value })}
         ></input>
+        <button className="submitButton" text="Submit">
+          Register
+        </button>
       </form>
     </div>
   )
