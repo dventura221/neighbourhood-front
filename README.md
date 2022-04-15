@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# **_NeighboUrhood_**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bring home the utility of social networks without the baggage.
 
-## Available Scripts
+## Date 4/15/2022
 
-In the project directory, you can run:
+### By: [Alissa Wiley](https://github.com/alissaestelle), [Dan Ventura](https://github.com/dventura221), and [Patrick Regan](https://github.com/pregan23)
 
-### `npm start`
+[Trello](https://trello.com/b/qnhB2qO3/the-neighbourhood)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### **NeighboUrhood is a community oriented social network that we are testing in Pern Place. Users can make posts, known as Streets, and other users can comment on them. The heart of NeighboUrhood is free-form communication within your community, without the clutter that doesn't apply. Only those with a Pern Place zipcode will be able to sign up for the platform so the discourse will be driven by community members themselves, rather than larger trends.**
 
-### `npm test`
+### **_Screenshots_**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Coming soon!
 
-### `npm run build`
+### **_Technologies Used_**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- HTML
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- CSS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Javscript
 
-### `npm run eject`
+- PostgreSQL
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Express
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Node
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- JWT
 
-## Learn More
+### **_Getting Started_**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Create your account and log in
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Create a Street (post)
 
-### Code Splitting
+- Comment on the posts of others, and reply to comments on your posts!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Edit and delete your posts and comments at will!
 
-### Analyzing the Bundle Size
+### **_Future Updates_**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [ ] Deployment in multiple neighborhoods
+- [ ] GPS features
 
-### Making a Progressive Web App
+### **_Credits_**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### **Knowledge and Knowhow**: [General Assembly](https://generalassemb.ly/), [Github](https://github.com/), [W3 Schools](https://www.w3schools.com/), [MDN](https://developer.mozilla.org/en-US/)
