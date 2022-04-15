@@ -1,6 +1,7 @@
 import './styles/App.css'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
+import RegisterForm from './components/RegisterForm'
 
 function App() {
   return (
@@ -8,7 +9,12 @@ function App() {
       <header className="App-header">
         <NavBar />
       </header>
-      <main>{/* <Routes><Route /></Routes> */}</main>
+      <main>
+        <RegisterForm />
+        {/* <Routes>
+          <Route path="/register" element={<RegisterForm />} />
+        </Routes> */}
+      </main>
     </div>
   )
 }
