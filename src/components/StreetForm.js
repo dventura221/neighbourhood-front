@@ -10,10 +10,10 @@ const StreetForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // axios
-    //  .post(`http://localhost:3001/user/new`, streetValues)
-    // .then((res) => console.log('successful'))
-    // .catch((err) => console.log(err.data))
+    axios
+      .post(`http://localhost:3001/street/1/new`, streetValues)
+      .then((res) => console.log('successful'))
+      .catch((err) => console.log(err.data))
     setStreetValues({ content: '' })
   }
 
@@ -28,7 +28,7 @@ const StreetForm = () => {
         <input
           required
           type="text"
-          name="Content"
+          name="content"
           value={streetValues.content}
           placeholder="Content"
           onChange={handleChange}
