@@ -8,7 +8,7 @@ const StreetFeed = () => {
 
   useEffect(() => {
     const getStreets = async () => {
-      const res = await axios.get('http://localhost:3001/feed')
+      const res = await axios.get('http://localhost:3001/street/feed')
       console.log(res)
       setAllStreets(res.data)
     }

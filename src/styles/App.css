@@ -36,3 +36,7 @@ button {
   display: block;
   margin: auto;
 }
+
+.navLink {
+  color: white;
+}
