@@ -26,10 +26,22 @@
 .LoginGrid {
   display: grid;
   grid-template-columns: 250px 250px;
-  grid-template-rows: 500px;
+  grid-template-rows: 450px;
   grid-gap: 5px;
   justify-content: center;
   background-color: #61dafb;
+}
+
+.Form input {
+  height: 30px;
+  width: 65%;
+  margin: 1%;
+}
+
+.Form button {
+  margin-top: 3%;
+  height: 30px;
+  width: 50%;
 }
 
 button {

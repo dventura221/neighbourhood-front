@@ -38,9 +38,9 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="registerUser">
-      <h1>Register New User</h1>
-      <form onSubmit={handleSubmit} className="registerForm">
+    <div>
+      <form className="Form" onSubmit={handleSubmit}>
+        <h1>New User</h1>
         <input
           required
           type="text"

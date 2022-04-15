@@ -27,7 +27,7 @@ const SignIn = () => {
   return (
     <div className="GridContainer">
       <div className="LoginGrid">
-        <form className="LoginForm" onSubmit={handleSubmit}>
+        <form className="Form" onSubmit={handleSubmit}>
           <h1>Sign In</h1>
           <input
             required
@@ -49,7 +49,7 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
-        <div className="RegisterForm">
+        <div>
           <RegisterForm />
         </div>
       </div>
