@@ -10,7 +10,9 @@ const StreetPost = (props) => {
 
   useEffect(() => {
     const getComments = async () => {
-      const results = await axios.get(`http://localhost:3001/comment/1`)
+      const results = await axios.get(
+        `http://localhost:3001/comment/${props.id}`
+      )
       setAllComments(results.data)
     }
     getComments()
@@ -29,7 +31,7 @@ const StreetPost = (props) => {
           {allComments.map((comment) => (
             <Comment
               key={comment.id}
-              streetId={comment.id}
+              streetId={comment.streetId}
               authorId={comment.authorId}
               content={comment.content}
             />
