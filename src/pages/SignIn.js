@@ -25,30 +25,35 @@ const SignIn = () => {
   }
 
   return (
-    <div className="GridContainer">
-      <div className="LoginGrid">
-        <form className="Form" onSubmit={handleSubmit}>
-          <h1>Sign In</h1>
-          <input
-            required
-            type="text"
-            name="userName"
-            value={signInValues.userName}
-            placeholder="User Name"
-            onChange={handleChange}
-          ></input>
-          <input
-            required
-            type="text"
-            name="password"
-            value={signInValues.password}
-            placeholder="Password"
-            onChange={handleChange}
-          ></input>
-          <button>Sign In</button>
-        </form>
-        <div>
-          <RegisterForm />
+    <div>
+      <h1 className="Title">
+        Neighbo<span>u</span>rly
+      </h1>
+      <div className="GridContainer">
+        <div className="LoginGrid">
+          <form className="Form" onSubmit={handleSubmit}>
+            <h1 className="LoginText">Sign In</h1>
+            <input
+              required
+              type="text"
+              name="userName"
+              value={signInValues.userName}
+              placeholder="User Name"
+              onChange={handleChange}
+            ></input>
+            <input
+              required
+              type="text"
+              name="password"
+              value={signInValues.password}
+              placeholder="Password"
+              onChange={handleChange}
+            ></input>
+            <button>Sign In</button>
+          </form>
+          <div>
+            <RegisterForm />
+          </div>
         </div>
       </div>
     </div>

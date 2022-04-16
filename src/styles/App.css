@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'Atlanta Rosery';
+  src: url('../fonts/AlantaRosery-MVXKJ.otf');
+}
+
+@font-face {
+  font-family: 'Bellyman Regular';
+  src: url('../fonts/BellymanRegular-8M59g.ttf');
+}
+
+@font-face {
+  font-family: 'Gofar Serif';
+  src: url('../fonts/GofarSerifPersonalUseRegular-qZMzr.otf');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -6,59 +21,123 @@
   text-align: center;
 }
 
-nav h1 {
-  font-family: 'Atlanta Rosery';
-  color: black;
+.Title {
+  font-family: 'Gofar Serif';
   font-size: 65px;
-  margin-top: 5%;
-  margin-bottom: 0;
+  margin: 2.5%;
 }
 
-nav a {
-  text-decoration: none;
-  color: black;
-  padding: 0 10px;
+.Title span {
+  color: #018749
 }
-
 
 .GridContainer {
   width: 500px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
+  border-radius: 10px;
 }
 
 .LoginGrid {
   display: grid;
-  grid-template-columns: 250px 250px;
+  grid-template-columns: 300px 300px;
   grid-template-rows: 450px;
   grid-gap: 5px;
   justify-content: center;
-  background-color: #61dafb;
   border-radius: 10px;
 }
 
+.LoginText {
+  font-family: 'Helvetica';
+  font-size: x-large;
+}
+
 .Form input {
-  height: 30px;
-  width: 65%;
-  margin: 1%;
+  height: 37.5px;
+  width: 75%;
+  margin: 1.5%;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid gray;
 }
 
 .Form button {
-  margin-top: 3%;
-  height: 30px;
-  width: 50%;
-}
-
-button {
   display: block;
   margin: auto;
-}
-
-.navLink {
+  margin-top: 3%;
+  height: 34.5px;
+  width: 50%;
+  border-radius: 15px;
+  border: 1px solid gray;
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
   color: white;
+  font-family: Arial;
+  font-size: large;
 }
 
-.StreetForm textarea {
+.StreetGrid {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 65px 1fr;
+  grid-gap: 5px;
+  justify-content: center;
+}
+
+.NavBar {
+  grid-column: span 3;
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+}
+
+.NavBar a {
+  font-family: Arial;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  margin-top: 2.5%;
+  padding: 0 10px;
+  float: right;
+}
+
+.LeftBar {
+}
+
+.MainFeed {
+}
+
+.StreetPost {
+  padding: 15px;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-bottom: 1px solid rgb(128, 128, 128, 0.5);
+}
+
+.StreetPost textarea {
+  width: 100%;
+  height: 75px;
   resize: none;
+  padding: 10px;
+  margin-bottom: 1.5%;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid rgb(128, 128, 128, 0.5);
+  border-radius: 10px;
+}
+
+#StreetButton {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  height: 35px;
+  width: 25%;
+  border: none;
+  border-radius: 20px;
+  background-color: #006A4E;
+  font-family: 'Atlanta Rosery';
+  color: white;
+  font-size: 20px;
+  text-transform: lowercase;
 }

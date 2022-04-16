@@ -8,8 +8,8 @@ const StreetPost = (props) => {
   return (
     <div>
       <div>
-        <h3>Street {props.id}</h3>
-        <h4>Author: {props.authorId}</h4>
+        {/* <p>Street {props.id}</p> */}
+        <p>Author: {props.authorId}</p>
         <p>Content: {props.content}</p>
       </div>
       <div>

@@ -9,13 +9,10 @@ import StreetFeed from './pages/StreetFeed'
 export default function App() {
   return (
     <div className="App">
-      <header>
-        <NavBar />
-      </header>
       <main>
         {/* <SignIn /> */}
         <Routes>
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/" element={<SignIn />} />
           <Route path="/streetfeed" element={<StreetFeed />} />
         </Routes>
       </main>

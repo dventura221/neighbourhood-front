@@ -40,7 +40,7 @@ const RegisterForm = () => {
   return (
     <div>
       <form className="Form" onSubmit={handleSubmit}>
-        <h1>New User</h1>
+        <h1 className="LoginText">New User</h1>
         <input
           required
           type="text"

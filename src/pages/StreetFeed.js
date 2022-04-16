@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import StreetForm from '../components/StreetForm'
 //import { Link } from 'react-router-dom'
+import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
 
@@ -17,19 +17,28 @@ const StreetFeed = () => {
   }, [])
 
   return (
-    <div>
-      <div>
-        <StreetForm />
+    <div className="StreetGrid">
+      <div className="NavBar">
+        <NavBar />
       </div>
-      <div className="allStreetGrid">
-        {allStreets.map((street) => (
-          <StreetPost
-            authorId={street.authorId}
-            content={street.content}
-            key={street.id}
-            id={street.id}
-          />
-        ))}
+      <div className="LeftBar">
+        <p>Weather API Goes Here</p>
+      </div>
+      <div className="MainFeed">
+        <StreetForm />
+        <div className="StreetMap">
+          {allStreets.map((street) => (
+            <StreetPost
+              authorId={street.authorId}
+              content={street.content}
+              key={street.id}
+              id={street.id}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="RightBar">
+        <p>News API Goes Here</p>
       </div>
     </div>
   )
