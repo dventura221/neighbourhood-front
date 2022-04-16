@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import StreetForm from '../components/StreetForm'
 //import { Link } from 'react-router-dom'
 import StreetPost from '../components/StreetPost'
+import StreetForm from '../components/StreetForm'
 
 const StreetFeed = () => {
   const [allStreets, setAllStreets] = useState([])
@@ -10,7 +11,6 @@ const StreetFeed = () => {
   useEffect(() => {
     const getStreets = async () => {
       const res = await axios.get('http://localhost:3001/street/feed')
-      console.log(res)
       setAllStreets(res.data)
     }
     getStreets()
@@ -23,7 +23,12 @@ const StreetFeed = () => {
       </div>
       <div className="allStreetGrid">
         {allStreets.map((street) => (
-          <StreetPost authorId={street.authorId} content={street.content} />
+          <StreetPost
+            authorId={street.authorId}
+            content={street.content}
+            key={street.id}
+            id={street.id}
+          />
         ))}
       </div>
     </div>
