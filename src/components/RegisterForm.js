@@ -40,7 +40,7 @@ const RegisterForm = () => {
   return (
     <div>
       <form className="Form" onSubmit={handleSubmit}>
-        <h1>New User</h1>
+        <h1 className="LoginText">New User</h1>
         <input
           required
           type="text"
@@ -88,13 +88,13 @@ const RegisterForm = () => {
           placeholder="Password"
           onChange={handleChange}
         ></input>
-        <input
+        {/* <input
           type="text"
           name="avatar"
           value={regUser.avatar}
           placeholder="Avatar"
           onChange={handleChange}
-        ></input>
+        ></input> */}
         <button className="submitButton" text="Submit">
           Register
         </button>
