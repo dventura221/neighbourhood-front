@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import StreetForm from '../components/StreetForm'
 //import { Link } from 'react-router-dom'
 import StreetPost from '../components/StreetPost'
 
@@ -17,6 +18,9 @@ const StreetFeed = () => {
 
   return (
     <div>
+      <div>
+        <StreetForm />
+      </div>
       <div className="allStreetGrid">
         {allStreets.map((street) => (
           <StreetPost authorId={street.authorId} content={street.content} />

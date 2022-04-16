@@ -22,17 +22,18 @@ const StreetForm = () => {
   }
 
   return (
-    <div className="streetFormComp">
+    <div>
       <h2>Create New Street</h2>
-      <form onSubmit={handleSubmit} className="streetForm">
-        <input
+      <form onSubmit={handleSubmit} className="StreetForm">
+        <textarea
+          rows="3"
           required
           type="text"
           name="content"
           value={streetValues.content}
           placeholder="Content"
           onChange={handleChange}
-        ></input>
+        ></textarea>
         <button disabled={!streetValues.content}>Submit</button>
       </form>
     </div>

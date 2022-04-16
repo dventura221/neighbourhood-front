@@ -88,13 +88,13 @@ const RegisterForm = () => {
           placeholder="Password"
           onChange={handleChange}
         ></input>
-        <input
+        {/* <input
           type="text"
           name="avatar"
           value={regUser.avatar}
           placeholder="Avatar"
           onChange={handleChange}
-        ></input>
+        ></input> */}
         <button className="submitButton" text="Submit">
           Register
         </button>
