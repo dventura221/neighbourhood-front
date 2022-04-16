@@ -9,7 +9,7 @@ const StreetForm = () => {
   })
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    //e.preventDefault()
     axios
       .post(`http://localhost:3001/street/1/new`, streetValues)
       .then((res) => console.log('successful'))
@@ -33,7 +33,7 @@ const StreetForm = () => {
           placeholder="Content"
           onChange={handleChange}
         ></input>
-        <button disabled={!streetValues.content}>Submit</button>
+        <button className="submitButton">Submit</button>
       </form>
     </div>
   )

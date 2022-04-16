@@ -45,9 +45,7 @@ const SignIn = () => {
             placeholder="Password"
             onChange={handleChange}
           ></input>
-          <button disabled={!signInValues.userName || !signInValues.password}>
-            Sign In
-          </button>
+          <button>Sign In</button>
         </form>
         <div>
           <RegisterForm />
