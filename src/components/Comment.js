@@ -8,7 +8,7 @@ const Comment = (props) => {
       <h4>Comment</h4>
       <h5>Author: {props.authorId} </h5>
       <h5>Street: {props.streetId}</h5>
-      <p>{props.content}</p>
+      <p>Comment Content: {props.content}</p>
     </div>
   )
 }

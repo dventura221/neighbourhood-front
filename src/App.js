@@ -21,7 +21,3 @@ export default function App() {
     </div>
   )
 }
-
-/* <SignIn />
-        <StreetForm />
-        <StreetFeed /> */

@@ -1,6 +1,7 @@
-import axios from 'axios'
+//import axios from 'axios'
 import { useState, useEffect } from 'react'
 //import { Link } from 'react-router-dom'
+import { GetStreets } from '../services/PostServices'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
 
@@ -9,8 +10,8 @@ const StreetFeed = () => {
 
   useEffect(() => {
     const getStreets = async () => {
-      const res = await axios.get('http://localhost:3001/street/feed')
-      setAllStreets(res.data)
+      const results = await GetStreets()
+      setAllStreets(results)
     }
     getStreets()
   }, [])
