@@ -26,6 +26,7 @@ const StreetFeed = () => {
             authorId={street.authorId}
             content={street.content}
             key={street.id}
+            id={street.id}
           />
         ))}
       </div>
