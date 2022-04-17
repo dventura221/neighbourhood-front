@@ -16,7 +16,7 @@ const StreetPost = (props) => {
       setAllComments(results.data)
     }
     getComments()
-  }, [])
+  }, [props.id])
 
   return (
     <div>
