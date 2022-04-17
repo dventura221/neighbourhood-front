@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 // import axios from 'axios'
 import RegisterForm from '../components/RegisterForm'
 //import { useNavigate } from 'react-router-dom'
@@ -10,6 +10,14 @@ const SignIn = () => {
     userName: '',
     password: ''
   })
+  const [justRegistered, setJustRegistered] = useState(false)
+
+  const wrapperSetJustRegistered = useCallback(
+    (value) => {
+      setJustRegistered(value)
+    },
+    [setJustRegistered]
+  ) //https://stackoverflow.com/questions/29100774/reactjs-setstate-on-parent-inside-child-component
 
   const handleChange = (e) => {
     setSignInValues({ ...signInValues, [e.target.name]: e.target.value })
@@ -52,7 +60,14 @@ const SignIn = () => {
             <button>Sign In</button>
           </form>
           <div>
-            <RegisterForm />
+            {justRegistered ? (
+              'Registration Successful. Please Sign In.'
+            ) : (
+              <RegisterForm
+                justRegistered={justRegistered}
+                justRegisteredSetter={wrapperSetJustRegistered}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -61,7 +76,3 @@ const SignIn = () => {
 }
 
 export default SignIn
-
-{
-  /* <button disabled={!signInValues.userName || !signInValues.password}> */
-}
