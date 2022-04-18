@@ -19,16 +19,17 @@ const SignIn = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log(signInValues)
     const payload = await SignInUser(signInValues)
     setSignInValues({ userName: '', password: '' })
     props.setUser(payload)
-    //props.toggleAuthenticated(true)
+    // props.toggleAuthenticated(true)
     navigate('/streetfeed')
   }
 
   return (
     <div>
-      <h1 className="Title">
+      <h1 id="Title">
         Neighbo<span>u</span>rly
       </h1>
       <div className="GridContainer">
