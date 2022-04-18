@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 //import { Link } from 'react-router-dom'
 import { GetStreets } from '../services/PostServices'
-//import NavBar from '../components/NavBar'
+import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
 // import { gAPI } from '../globals'
@@ -32,9 +32,9 @@ const StreetFeed = (props) => {
 
   return props.user ? (
     <div className="StreetGrid">
-      {/* <div className="NavBar">
+      <div className="NavBar">
         <NavBar />
-      </div> */}
+      </div>
       <div className="LeftBar">
         <p>Weather API Goes Here</p>
       </div>
