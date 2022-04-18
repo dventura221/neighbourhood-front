@@ -65,3 +65,11 @@ const StreetFeed = (props) => {
 }
 
 export default StreetFeed
+
+// props.user ? (
+// ) : (
+//     <div className="protected">
+//       <h3>Oops! You must be signed in to do that!</h3>
+//       <button onClick={() => navigate('/')}>Sign In</button>
+//     </div>
+//   )
