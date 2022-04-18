@@ -19,10 +19,11 @@ const SignIn = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const payload = await SignInUser(setSignInValues)
-    setSignInValues({ username: '', password: '' })
+    console.log(signInValues)
+    const payload = await SignInUser(signInValues)
+    setSignInValues({ userName: '', password: '' })
     props.setUser(payload)
-    props.toggleAuthenticated(true)
+    // props.toggleAuthenticated(true)
     navigate('/streetfeed')
   }
 
