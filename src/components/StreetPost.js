@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
+import { faComment } from '@fortawesome/free-regular-svg-icons'
 //import { useParams } from 'react-router-dom'
 import CommentForm from './CommentForm'
 import Comment from './Comment'
@@ -7,6 +11,7 @@ import Comment from './Comment'
 const StreetPost = (props) => {
   //let { id } = useParams()
   const [allComments, setAllComments] = useState([])
+  const [isClicked, setClicked] = useState(false)
 
   useEffect(() => {
     const getComments = async () => {
@@ -18,15 +23,34 @@ const StreetPost = (props) => {
     getComments()
   }, [props.id])
 
+  const changeStyle = (e) => {
+    e.preventDefault()
+    setClicked(!isClicked)
+  }
+
   return (
-    <div>
-      <div className="StreetPost">
-        {/* <p>Street {props.id}</p> */}
-        <p id="StreetContent">
-          <span>@user_name</span> <br />
-          {props.content}
-        </p>
-        <CommentForm />
+    <div className="PostFeed">
+      {/* <p>Street {props.id}</p> */}
+      <p className="PostContainer PostContent">
+        <span id="Name">Jane Doe</span>
+        <span id="Handle">@user_name</span>
+        <div id="FeedContent">{props.content}</div>
+      </p>
+      <div className="IconBar">
+        {!isClicked ? (
+          <FontAwesomeIcon
+            icon={faHeartRegular}
+            id="RegHeart"
+            onClick={changeStyle}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faHeartSolid}
+            id="SolidHeart"
+            onClick={changeStyle}
+          />
+        )}
+        <FontAwesomeIcon icon={faComment} id="ConvoBubble" />
         {allComments.map((comment) => (
           <Comment
             key={comment.id}
@@ -35,9 +59,10 @@ const StreetPost = (props) => {
             content={comment.content}
           />
         ))}
-        {/* Add conditional render the multiple
-        comments. */}
       </div>
+      <CommentForm />
+      {/* Add conditional render the multiple
+        comments. */}
     </div>
   )
 }

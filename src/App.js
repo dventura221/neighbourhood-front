@@ -2,7 +2,7 @@ import './styles/App.css'
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { CheckSession } from './services/Auth'
-import NavBar from './components/NavBar'
+// import NavBar from './components/NavBar'
 import SignIn from './pages/SignIn'
 import StreetFeed from './pages/StreetFeed'
 
@@ -28,13 +28,13 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="NavBar">
-        <NavBar user={user} handleLogOut={handleLogOut} />
-      </div>
       <main>
         <Routes>
           <Route path="/" element={<SignIn setUser={setUser} />} />
-          <Route path="/streetfeed" element={<StreetFeed user={user} />} />
+          <Route
+            path="/streetfeed"
+            element={<StreetFeed user={user} handleLogOut={handleLogOut} />}
+          />
         </Routes>
       </main>
     </div>

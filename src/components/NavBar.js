@@ -1,24 +1,25 @@
 import { Link } from 'react-router-dom'
 
 const NavBar = (props) => {
-  let authenticatedOptions
-  if (props.user) {
-    authenticatedOptions = (
-      <div>
-        <h3>Welcome {props.user.userName}</h3>
-        <Link to="/streetfeed">The Feed</Link>
-        <Link to="/" onClick={props.handleLogOut}>
-          Log Out
-        </Link>
-        {/* <Link className="navLink">Your Streets</Link> */}
-        {/* <Link className="navLink">Your Comments</Link> */}
-      </div>
-    )
-  }
+  // let authenticatedOptions
+  // if (props.user) {
+  //   authenticatedOptions = (
+  //       {/* <Link className="navLink">Your Streets</Link> */}
+  //       {/* <Link className="navLink">Your Comments</Link> */}
+  //   )
+  // }
 
-  const publicOptions = <nav>{/* <Link to="/">Sign In</Link> */}</nav>
+  // const publicOptions = {/* <Link to="/">Sign In</Link> */}
 
-  return <div>{props.user ? authenticatedOptions : publicOptions}</div>
+  return (
+    <div>
+      <Link to="/streetfeed">The Feed</Link>
+      <Link to="/" onClick={props.handleLogOut}>
+        Log Out
+      </Link>
+      <h2>welcome @{props.user.userName}!</h2>
+    </div>
+  )
 }
 
 export default NavBar

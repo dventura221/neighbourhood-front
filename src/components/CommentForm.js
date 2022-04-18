@@ -10,7 +10,7 @@ const CommentForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios
-      .post(`http://localhost:3001/comment/1/1/new`, commentValues)
+      .post(`http://localhost:3001/comment/2/1/new`, commentValues)
       .then((res) => console.log('successful'))
       .catch((err) => console.log(err.data))
     setCommentValues({ content: '' })
@@ -21,18 +21,17 @@ const CommentForm = () => {
   }
 
   return (
-    <div className="commentFormComp">
-      <h3>Create Comment</h3>
-      <form onSubmit={handleSubmit} className="commentForm">
-        <input
+    <div className="Comment">
+      <form onSubmit={handleSubmit}>
+        <textarea
           required
           type="text"
           name="content"
           value={commentValues.content}
-          placeholder="Content"
+          placeholder="Add a comment!"
           onChange={handleChange}
-        ></input>
-        <button className="submitButton">Submit</button>
+        ></textarea>
+        <button className="CommentButton">Post</button>
       </form>
     </div>
   )
