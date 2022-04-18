@@ -23,7 +23,6 @@ const SignIn = (props) => {
     const payload = await SignInUser(signInValues)
     setSignInValues({ userName: '', password: '' })
     props.setUser(payload)
-    // props.toggleAuthenticated(true)
     navigate('/streetfeed')
   }
 
