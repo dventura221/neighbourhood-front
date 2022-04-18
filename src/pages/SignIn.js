@@ -1,10 +1,11 @@
 import { useState, useCallback } from 'react'
 // import axios from 'axios'
 import RegisterForm from '../components/RegisterForm'
-//import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { SignInUser } from '../services/Auth'
 
-const SignIn = () => {
-  //let navigate = useNavigate()
+const SignIn = (props) => {
+  let navigate = useNavigate()
 
   const [signInValues, setSignInValues] = useState({
     userName: '',
@@ -18,6 +19,7 @@ const SignIn = () => {
     },
     [setJustRegistered]
   ) //https://stackoverflow.com/questions/29100774/reactjs-setstate-on-parent-inside-child-component
+  // Is there an easier way to do this?
 
   const handleChange = (e) => {
     setSignInValues({ ...signInValues, [e.target.name]: e.target.value })
@@ -25,11 +27,11 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    //const payload = await SignInUser(setSignInValues)
+    const payload = await SignInUser(setSignInValues)
     setSignInValues({ username: '', password: '' })
-    //setUser(payload)
-    //toggleAuthenticated(true)
-    //navigate('/streetfeed')
+    props.setUser(payload)
+    props.toggleAuthenticated(true)
+    navigate('/streetfeed')
   }
 
   return (
