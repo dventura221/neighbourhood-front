@@ -63,10 +63,6 @@ const StreetPost = (props) => {
       </div>
       <div className="StreetPost">
         {/* <p>Street {props.id}</p> */}
-        <p id="StreetContent">
-          <span>@user_name</span> <br />
-          {props.content}
-        </p>
         <CommentForm
           user={props.user}
           streetId={props.id}

@@ -1,9 +1,4 @@
 import { useState } from 'react'
-
-import axios from 'axios'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
-import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import Client from '../services/api'
 //import { useNavigate } from 'react-router-dom'
 
