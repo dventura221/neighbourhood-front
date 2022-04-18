@@ -26,7 +26,7 @@ const SignIn = () => {
 
   return (
     <div>
-      <h1 className="Title">
+      <h1 id="Title">
         Neighbo<span>u</span>rly
       </h1>
       <div className="GridContainer">

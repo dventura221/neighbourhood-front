@@ -5,6 +5,8 @@ import { GetStreets } from '../services/PostServices'
 import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
+import axios from 'axios'
+import { gAPI } from '../globals'
 
 const StreetFeed = () => {
   const [allStreets, setAllStreets] = useState([])
@@ -15,6 +17,16 @@ const StreetFeed = () => {
       setAllStreets(results)
     }
     getStreets()
+  }, [])
+
+  useEffect(() => {
+    const getNews = async () => {
+      let response = await axios.get(
+        `https://content.guardianapis.com/us/media?key=${gAPI}`
+      )
+      console.log(response)
+    }
+    getNews()
   }, [])
 
   return (
