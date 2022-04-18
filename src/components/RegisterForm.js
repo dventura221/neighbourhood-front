@@ -11,7 +11,7 @@ const RegisterForm = (props) => {
     zipcode: '',
     age: '',
     userName: '',
-    passwordDigest: ''
+    password: ''
     //avatar: ''
   })
 
@@ -23,7 +23,7 @@ const RegisterForm = (props) => {
       zipcode: regUser.zipcode,
       age: regUser.age,
       userName: regUser.userName,
-      passwordDigest: regUser.passwordDigest
+      password: regUser.password
       //avatar: regUser.avatar
     })
     setRegUser({
@@ -32,7 +32,7 @@ const RegisterForm = (props) => {
       zipcode: '',
       age: '',
       userName: '',
-      passwordDigest: ''
+      password: ''
       //avatar: ''
     })
     props.setJustRegistered(true)
@@ -89,8 +89,8 @@ const RegisterForm = (props) => {
         <input
           required
           type="text"
-          name="passwordDigest"
-          value={regUser.passwordDigest}
+          name="password"
+          value={regUser.password}
           placeholder="Password"
           onChange={handleChange}
         ></input>
