@@ -24,18 +24,17 @@ const CommentForm = (props) => {
   }
 
   return (
-    <div className="commentFormComp">
-      <h3>Create Comment</h3>
-      <form onSubmit={handleSubmit} className="commentForm">
-        <input
+    <div className="Comment">
+      <form onSubmit={handleSubmit}>
+        <textarea
           required
           type="text"
           name="content"
           value={commentValues.content}
-          placeholder="Content"
+          placeholder="Add a comment!"
           onChange={handleChange}
-        ></input>
-        <button className="submitButton">Submit</button>
+        ></textarea>
+        <button className="CommentButton">Post</button>
       </form>
     </div>
   )

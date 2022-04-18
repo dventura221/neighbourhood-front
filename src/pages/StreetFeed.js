@@ -32,7 +32,7 @@ const StreetFeed = (props) => {
   return props.user ? (
     <div className="StreetGrid">
       <div className="NavBar">
-        <NavBar />
+        <NavBar user={props.user} handleLogOut={props.handleLogOut} />
       </div>
       <div className="LeftBar">
         <p>Weather API Goes Here</p>

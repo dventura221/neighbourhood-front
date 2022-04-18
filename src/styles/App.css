@@ -94,10 +94,20 @@
   background: linear-gradient(90deg, #bfcbe0 0%, #cfe9d2 100%);
 }
 
-.LeftBar {
+.NavBar h2 {
+  text-align: left;
+  margin-left: 1.5%;
 }
 
-.MainFeed {
+.NavBar a {
+  font-family: Arial;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  float: right;
+  margin-right: 1.5%;
+  padding-right: 10px;
 }
 
 .StreetPost {
@@ -105,6 +115,14 @@
   margin-left: 5%;
   margin-right: 5%;
   border-bottom: 1px solid rgb(128, 128, 128, 0.5);
+}
+
+.PostFeed {
+  padding: 15px;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-bottom: 1px solid rgb(128, 128, 128, 0.5);
+  position: relative;
 }
 
 .StreetPost p {
@@ -118,9 +136,16 @@
   text-align: left;
 }
 
-.StreetPost span {
+#Name {
+  font-size: 18px;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+#Handle {
   color: #01796F;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .StreetPost textarea {
@@ -138,6 +163,33 @@
 ::-webkit-input-placeholder {
   color: rgb(128, 128, 128, 0.6);
   font-weight: bold;
+}
+
+.PostContainer {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 1.5%;
+  font-family: Arial;
+  font-size: 16px;
+  border: 1px solid rgb(128, 128, 128, 0.2);
+  border-radius: 10px;
+}
+
+.PostContent {
+  padding-left: 10px;
+  font-family: Helvetica;
+  font-size: 18px;
+  color: black;
+  text-align: left;
+}
+
+.IconBar {
+  text-align: left;
+}
+
+#FeedContent {
+  padding-top: .75%;
 }
 
 #StreetButton {
@@ -158,16 +210,30 @@
 }
 
 #RegHeart {
+  margin-top: 2%;
   margin-left: 2%;
   font-size: 20px;
 }
 
 #SolidHeart {
   color: red;
+  margin-top: 2%;
   margin-left: 2%;
   font-size: 20px;
 }
 
-.FeedPost {
-  border-bottom: 1px solid rgb(128, 128, 128, 0.5);
+#ConvoBubble {
+  margin-top: 2%;
+  margin-left: 1.5%;
+  font-size: 20px;
+}
+
+.Comment {
+  position: relative;
+}
+
+.CommentButton {
+  display: block;
+  margin-right: 0;
+  margin-left: auto;
 }
