@@ -27,7 +27,11 @@ const StreetPost = (props) => {
           <span>@user_name</span> <br />
           {props.content}
         </p>
-        <CommentForm />
+        <CommentForm
+          user={props.user}
+          streetId={props.id}
+          getComments={getComments}
+        />
         {allComments.map((comment) => (
           <Comment
             key={comment.id}
