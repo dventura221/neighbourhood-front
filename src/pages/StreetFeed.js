@@ -5,10 +5,11 @@ import { GetStreets } from '../services/PostServices'
 import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
-import axios from 'axios'
 import { gAPI } from '../globals'
+import { useNavigate } from 'react-router-dom'
 
-const StreetFeed = () => {
+const StreetFeed = (props) => {
+  let navigate = useNavigate()
   const [allStreets, setAllStreets] = useState([])
 
   useEffect(() => {
@@ -18,6 +19,7 @@ const StreetFeed = () => {
     }
     getStreets()
   }, [])
+
 
   useEffect(() => {
     const getNews = async () => {
@@ -29,7 +31,7 @@ const StreetFeed = () => {
     getNews()
   }, [])
 
-  return (
+  return props.user ? (
     <div className="StreetGrid">
       <div className="NavBar">
         <NavBar />
@@ -53,6 +55,11 @@ const StreetFeed = () => {
       <div className="RightBar">
         <p>News API Goes Here</p>
       </div>
+    </div>
+  ) : (
+    <div className="protected">
+      <h3>Oops! You must be signed in to do that!</h3>
+      <button onClick={() => navigate('/')}>Sign In</button>
     </div>
   )
 }

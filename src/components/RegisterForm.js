@@ -1,36 +1,42 @@
 import { useState } from 'react'
-import axios from 'axios'
-//import { useNavigate } from 'react-router-dom'
+import { RegisterUser } from '../services/Auth'
+//import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-const RegisterForm = () => {
-  //let navigate = useNavigate()
-
+const RegisterForm = (props) => {
+  let navigate = useNavigate()
   const [regUser, setRegUser] = useState({
     firstName: '',
     lastName: '',
     zipcode: '',
     age: '',
     userName: '',
-    passwordDigest: '',
-    avatar: ''
+    passwordDigest: ''
+    //avatar: ''
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    axios
-      .post(`http://localhost:3001/user/new`, regUser)
-      .then((res) => console.log('successful'))
-      .catch((err) => console.log(err.data))
+    await RegisterUser({
+      firstName: regUser.firstName,
+      lastName: regUser.lastName,
+      zipcode: regUser.zipcode,
+      age: regUser.age,
+      userName: regUser.userName,
+      passwordDigest: regUser.passwordDigest
+      //avatar: regUser.avatar
+    })
     setRegUser({
       firstName: '',
       lastName: '',
       zipcode: '',
       age: '',
       userName: '',
-      passwordDigest: '',
-      avatar: ''
+      passwordDigest: ''
+      //avatar: ''
     })
-    // ADD useNAV to LogIn Page
+    props.setJustRegistered(true)
+    navigate('/')
   }
 
   const handleChange = (e) => {

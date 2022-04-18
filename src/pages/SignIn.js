@@ -1,15 +1,17 @@
 import { useState } from 'react'
 // import axios from 'axios'
 import RegisterForm from '../components/RegisterForm'
-//import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { SignInUser } from '../services/Auth'
 
-const SignIn = () => {
-  //let navigate = useNavigate()
+const SignIn = (props) => {
+  let navigate = useNavigate()
 
   const [signInValues, setSignInValues] = useState({
     userName: '',
     password: ''
   })
+  const [justRegistered, setJustRegistered] = useState(false)
 
   const handleChange = (e) => {
     setSignInValues({ ...signInValues, [e.target.name]: e.target.value })
@@ -17,11 +19,11 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    //const payload = await SignInUser(setSignInValues)
+    const payload = await SignInUser(setSignInValues)
     setSignInValues({ username: '', password: '' })
-    //setUser(payload)
-    //toggleAuthenticated(true)
-    //navigate('/streetfeed')
+    props.setUser(payload)
+    props.toggleAuthenticated(true)
+    navigate('/streetfeed')
   }
 
   return (
@@ -52,7 +54,11 @@ const SignIn = () => {
             <button>Sign In</button>
           </form>
           <div>
-            <RegisterForm />
+            {justRegistered ? (
+              'Registration Successful. Please Sign In.'
+            ) : (
+              <RegisterForm setJustRegistered={setJustRegistered} />
+            )}
           </div>
         </div>
       </div>
@@ -61,7 +67,3 @@ const SignIn = () => {
 }
 
 export default SignIn
-
-{
-  /* <button disabled={!signInValues.userName || !signInValues.password}> */
-}
