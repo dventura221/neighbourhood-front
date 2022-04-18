@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+//import axios from 'axios'
 //import { useParams } from 'react-router-dom'
 import CommentForm from './CommentForm'
 import Comment from './Comment'
+import Client from '../services/api'
 
 const StreetPost = (props) => {
   //let { id } = useParams()
   const [allComments, setAllComments] = useState([])
 
+  const getComments = async () => {
+    const results = await Client.get(
+      `http://localhost:3001/comment/${props.id}`
+    )
+    setAllComments(results.data)
+  }
   useEffect(() => {
-    const getComments = async () => {
-      const results = await axios.get(
-        `http://localhost:3001/comment/${props.id}`
-      )
-      setAllComments(results.data)
-    }
     getComments()
   }, [props.id])
 
