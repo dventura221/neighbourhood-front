@@ -122,6 +122,7 @@
   margin-left: 5%;
   margin-right: 5%;
   border-bottom: 1px solid rgb(128, 128, 128, 0.5);
+  position: relative;
 }
 
 .StreetPost p {
@@ -184,7 +185,6 @@
 }
 
 .IconBar {
-  height: auto;
   text-align: left;
 }
 
@@ -228,10 +228,12 @@
   font-size: 20px;
 }
 
-.Comment form {
-  float: right;
+.Comment {
+  position: relative;
 }
 
 .CommentButton {
   display: block;
+  margin-right: 0;
+  margin-left: auto;
 }

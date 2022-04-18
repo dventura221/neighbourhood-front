@@ -37,31 +37,33 @@ const StreetPost = (props) => {
         <span id="Handle">@user_name</span>
         <div id="FeedContent">{props.content}</div>
       </p>
-      <div className="IconBar">
-        {!isClicked ? (
-          <FontAwesomeIcon
-            icon={faHeartRegular}
-            id="RegHeart"
-            onClick={changeStyle}
-          />
-        ) : (
-          <FontAwesomeIcon
-            icon={faHeartSolid}
-            id="SolidHeart"
-            onClick={changeStyle}
-          />
-        )}
-        <FontAwesomeIcon icon={faComment} id="ConvoBubble" />
-        {allComments.map((comment) => (
-          <Comment
-            key={comment.id}
-            streetId={comment.streetId}
-            authorId={comment.authorId}
-            content={comment.content}
-          />
-        ))}
+      <div className="InlineBlock">
+        <div className="IconBar">
+          {!isClicked ? (
+            <FontAwesomeIcon
+              icon={faHeartRegular}
+              id="RegHeart"
+              onClick={changeStyle}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faHeartSolid}
+              id="SolidHeart"
+              onClick={changeStyle}
+            />
+          )}
+          <FontAwesomeIcon icon={faComment} id="ConvoBubble" />
+          {allComments.map((comment) => (
+            <Comment
+              key={comment.id}
+              streetId={comment.streetId}
+              authorId={comment.authorId}
+              content={comment.content}
+            />
+          ))}
+        </div>
+        <CommentForm />
       </div>
-      <CommentForm />
       {/* Add conditional render the multiple
         comments. */}
     </div>
