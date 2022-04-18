@@ -94,17 +94,6 @@
   background: linear-gradient(90deg, #bfcbe0 0%, #cfe9d2 100%);
 }
 
-.NavBar a {
-  font-family: Arial;
-  font-size: large;
-  font-weight: bold;
-  text-decoration: none;
-  color: black;
-  margin-top: 2.5%;
-  padding: 0 10px;
-  float: right;
-}
-
 .LeftBar {
 }
 
@@ -177,4 +166,8 @@
   color: red;
   margin-left: 2%;
   font-size: 20px;
+}
+
+.FeedPost {
+  border-bottom: 1px solid rgb(128, 128, 128, 0.5);
 }

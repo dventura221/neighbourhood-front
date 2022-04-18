@@ -21,23 +21,21 @@ const StreetPost = (props) => {
 
   return (
     <div>
-      <div>
+      <div className="StreetPost">
         {/* <p>Street {props.id}</p> */}
-        <p>Author: {props.authorId}</p>
-        <p>Content: {props.content}</p>
-      </div>
-      <div>
-        <CommentForm getComments={getComments} />
-        <div className="allCommentsGrid">
-          {allComments.map((comment) => (
-            <Comment
-              key={comment.id}
-              streetId={comment.streetId}
-              authorId={comment.authorId}
-              content={comment.content}
-            />
-          ))}
-        </div>
+        <p id="StreetContent">
+          <span>@user_name</span> <br />
+          {props.content}
+        </p>
+        <CommentForm />
+        {allComments.map((comment) => (
+          <Comment
+            key={comment.id}
+            streetId={comment.streetId}
+            authorId={comment.authorId}
+            content={comment.content}
+          />
+        ))}
         {/* Add conditional render the multiple
         comments. */}
       </div>
