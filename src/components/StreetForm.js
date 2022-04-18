@@ -5,7 +5,7 @@ import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import Client from '../services/api'
 //import { useNavigate } from 'react-router-dom'
 
-const StreetForm = () => {
+const StreetForm = (props) => {
   // let navigate = useNavigate()
   const [streetValues, setStreetValues] = useState({
     content: ''
@@ -14,10 +14,14 @@ const StreetForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    Client.post(`http://localhost:3001/street/1/new`, streetValues)
+    Client.post(
+      `http://localhost:3001/street/${props.user.id}/new`,
+      streetValues
+    )
       .then((res) => console.log('successful'))
       .catch((err) => console.log(err.data))
     setStreetValues({ content: '' })
+    props.getStreets()
   }
 
   const handleChange = (e) => {
