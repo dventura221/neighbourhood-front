@@ -1,17 +1,16 @@
 import { useState } from 'react'
-import axios from 'axios'
 //import { useNavigate } from 'react-router-dom'
+import Client from '../services/api'
 
-const CommentForm = () => {
+const CommentForm = (props) => {
   // let navigate = useNavigate()
 
   const [commentValues, setCommentValues] = useState({ content: '' })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios
-      .post(`http://localhost:3001/comment/2/1/new`, commentValues)
-      .then((res) => console.log('successful'))
+    Client.post(`http://localhost:3001/comment/1/1/new`, commentValues)
+      .then((res) => console.log('successful')(props.getComments()))
       .catch((err) => console.log(err.data))
     setCommentValues({ content: '' })
   }

@@ -1,6 +1,10 @@
 import { useState } from 'react'
 
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
+import Client from '../services/api'
 //import { useNavigate } from 'react-router-dom'
 
 const StreetForm = () => {
@@ -10,9 +14,8 @@ const StreetForm = () => {
   })
 
   const handleSubmit = (e) => {
-    //e.preventDefault()
-    axios
-      .post(`http://localhost:3001/street/1/new`, streetValues)
+    e.preventDefault()
+    Client.post(`http://localhost:3001/street/1/new`, streetValues)
       .then((res) => console.log('successful'))
       .catch((err) => console.log(err.data))
     setStreetValues({ content: '' })

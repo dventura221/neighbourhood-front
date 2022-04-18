@@ -19,7 +19,6 @@ const SignIn = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(signInValues)
     const payload = await SignInUser(signInValues)
     setSignInValues({ userName: '', password: '' })
     props.setUser(payload)
