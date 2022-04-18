@@ -1,24 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { RegisterUser } from '../services/Auth'
 //import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 const RegisterForm = (props) => {
   let navigate = useNavigate()
-  const [childReg, setChildReg] = useState(false)
   const [regUser, setRegUser] = useState({
     firstName: '',
     lastName: '',
     zipcode: '',
     age: '',
     userName: '',
-    passwordDigest: '',
-    avatar: ''
+    passwordDigest: ''
+    //avatar: ''
   })
-
-  useEffect(() => {
-    props.justRegisteredSetter(childReg)
-  }, [props.justRegisteredSetter, childReg])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -28,8 +23,8 @@ const RegisterForm = (props) => {
       zipcode: regUser.zipcode,
       age: regUser.age,
       userName: regUser.userName,
-      passwordDigest: regUser.passwordDigest,
-      avatar: regUser.avatar
+      passwordDigest: regUser.passwordDigest
+      //avatar: regUser.avatar
     })
     setRegUser({
       firstName: '',
@@ -37,10 +32,10 @@ const RegisterForm = (props) => {
       zipcode: '',
       age: '',
       userName: '',
-      passwordDigest: '',
-      avatar: ''
+      passwordDigest: ''
+      //avatar: ''
     })
-    setChildReg(true)
+    props.setJustRegistered(true)
     navigate('/')
   }
 
