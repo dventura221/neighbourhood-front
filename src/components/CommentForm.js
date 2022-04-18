@@ -9,10 +9,14 @@ const CommentForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    Client.post(`http://localhost:3001/comment/1/1/new`, commentValues)
-      .then((res) => console.log('successful')(props.getComments()))
+    Client.post(
+      `http://localhost:3001/comment/${props.user.id}/${props.streetId}/new`,
+      commentValues
+    )
+      .then((res) => console.log('successful'))
       .catch((err) => console.log(err.data))
     setCommentValues({ content: '' })
+    props.getComments()
   }
 
   const handleChange = (e) => {

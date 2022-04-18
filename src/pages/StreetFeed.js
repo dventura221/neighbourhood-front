@@ -1,4 +1,3 @@
-// import axios from 'axios'
 import { useState, useEffect } from 'react'
 //import { Link } from 'react-router-dom'
 import { GetStreets } from '../services/PostServices'
@@ -10,13 +9,13 @@ import { useNavigate } from 'react-router-dom'
 
 const StreetFeed = (props) => {
   let navigate = useNavigate()
-  const [allStreets, setAllStreets] = useState([])
 
+  const [allStreets, setAllStreets] = useState([])
+  const getStreets = async () => {
+    const results = await GetStreets()
+    setAllStreets(results)
+  }
   useEffect(() => {
-    const getStreets = async () => {
-      const results = await GetStreets()
-      setAllStreets(results)
-    }
     getStreets()
   }, [])
 
@@ -39,7 +38,7 @@ const StreetFeed = (props) => {
         <p>Weather API Goes Here</p>
       </div>
       <div className="MainFeed">
-        <StreetForm />
+        <StreetForm user={props.user} getStreets={getStreets} />
         <div className="StreetMap">
           {allStreets.map((street) => (
             <StreetPost
@@ -47,6 +46,7 @@ const StreetFeed = (props) => {
               content={street.content}
               key={street.id}
               id={street.id}
+              user={props.user}
             />
           ))}
         </div>

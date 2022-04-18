@@ -37,32 +37,51 @@ const StreetPost = (props) => {
         <span id="Handle">@user_name</span>
         <div id="FeedContent">{props.content}</div>
       </p>
-      <div className="InlineBlock">
-        <div className="IconBar">
-          {!isClicked ? (
-            <FontAwesomeIcon
-              icon={faHeartRegular}
-              id="RegHeart"
-              onClick={changeStyle}
-            />
-          ) : (
-            <FontAwesomeIcon
-              icon={faHeartSolid}
-              id="SolidHeart"
-              onClick={changeStyle}
-            />
-          )}
-          <FontAwesomeIcon icon={faComment} id="ConvoBubble" />
-          {allComments.map((comment) => (
-            <Comment
-              key={comment.id}
-              streetId={comment.streetId}
-              authorId={comment.authorId}
-              content={comment.content}
-            />
-          ))}
-        </div>
-        <CommentForm />
+      <div className="IconBar">
+        {!isClicked ? (
+          <FontAwesomeIcon
+            icon={faHeartRegular}
+            id="RegHeart"
+            onClick={changeStyle}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faHeartSolid}
+            id="SolidHeart"
+            onClick={changeStyle}
+          />
+        )}
+        <FontAwesomeIcon icon={faComment} id="ConvoBubble" />
+        {allComments.map((comment) => (
+          <Comment
+            key={comment.id}
+            streetId={comment.streetId}
+            authorId={comment.authorId}
+            content={comment.content}
+          />
+        ))}
+      </div>
+      <div className="StreetPost">
+        {/* <p>Street {props.id}</p> */}
+        <p id="StreetContent">
+          <span>@user_name</span> <br />
+          {props.content}
+        </p>
+        <CommentForm
+          user={props.user}
+          streetId={props.id}
+          getComments={getComments}
+        />
+        {allComments.map((comment) => (
+          <Comment
+            key={comment.id}
+            streetId={comment.streetId}
+            authorId={comment.authorId}
+            content={comment.content}
+          />
+        ))}
+        {/* Add conditional render the multiple
+        comments. */}
       </div>
       {/* Add conditional render the multiple
         comments. */}
