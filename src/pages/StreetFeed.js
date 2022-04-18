@@ -5,6 +5,7 @@ import { GetStreets } from '../services/PostServices'
 import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
+import { gAPI } from '../globals'
 import { useNavigate } from 'react-router-dom'
 
 const StreetFeed = (props) => {
@@ -17,6 +18,17 @@ const StreetFeed = (props) => {
       setAllStreets(results)
     }
     getStreets()
+  }, [])
+
+
+  useEffect(() => {
+    const getNews = async () => {
+      let response = await axios.get(
+        `https://content.guardianapis.com/us/media?key=${gAPI}`
+      )
+      console.log(response)
+    }
+    getNews()
   }, [])
 
   return props.user ? (
