@@ -2,14 +2,14 @@
 import { useState, useEffect } from 'react'
 //import { Link } from 'react-router-dom'
 import { GetStreets } from '../services/PostServices'
-import NavBar from '../components/NavBar'
+//import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
 // import { gAPI } from '../globals'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const StreetFeed = (props) => {
-  // let navigate = useNavigate()
+  let navigate = useNavigate()
   const [allStreets, setAllStreets] = useState([])
 
   useEffect(() => {
@@ -30,12 +30,11 @@ const StreetFeed = (props) => {
   //   getNews()
   // }, [])
 
-  // return props.user ? (
-  return (
+  return props.user ? (
     <div className="StreetGrid">
-      <div className="NavBar">
+      {/* <div className="NavBar">
         <NavBar />
-      </div>
+      </div> */}
       <div className="LeftBar">
         <p>Weather API Goes Here</p>
       </div>
@@ -56,20 +55,12 @@ const StreetFeed = (props) => {
         <p>News API Goes Here</p>
       </div>
     </div>
+  ) : (
+    <div className="protected">
+      <h3>Oops! You must be signed in to do that!</h3>
+      <button onClick={() => navigate('/')}>Sign In</button>
+    </div>
   )
-  // : (
-  //   <div className="protected">
-  //     <h3>Oops! You must be signed in to do that!</h3>
-  //     <button onClick={() => navigate('/')}>Sign In</button>
-  //   </div>)
 }
 
 export default StreetFeed
-
-// props.user ? (
-// ) : (
-//     <div className="protected">
-//       <h3>Oops! You must be signed in to do that!</h3>
-//       <button onClick={() => navigate('/')}>Sign In</button>
-//     </div>
-//   )
