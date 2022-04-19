@@ -16,7 +16,7 @@ const CommentForm = (props) => {
       .then((res) => console.log('successful'))
       .catch((err) => console.log(err.data))
     setCommentValues({ content: '' })
-    props.setCount(props.count + 1)
+    props.setCommentCount(props.commentCount + 1)
   }
 
   const handleChange = (e) => {
