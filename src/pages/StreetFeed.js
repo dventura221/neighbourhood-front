@@ -9,7 +9,8 @@ import { useNavigate } from 'react-router-dom'
 
 const StreetFeed = (props) => {
   let navigate = useNavigate()
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(10000)
+  const [streetCount, setStreetCount] = useState(10000)
 
   useEffect(() => {
     const getStreets = async () => {
@@ -18,7 +19,7 @@ const StreetFeed = (props) => {
       props.setAllStreets(results)
     }
     getStreets()
-  }, [count])
+  }, [count, streetCount])
 
   // useEffect(() => {
   //   const getNews = async () => {
@@ -39,7 +40,13 @@ const StreetFeed = (props) => {
         <p>Weather API Goes Here</p>
       </div>
       <div className="MainFeed">
-        <StreetForm user={props.user} count={count} setCount={setCount} />
+        <StreetForm
+          user={props.user}
+          count={count}
+          setCount={setCount}
+          streetCount={streetCount}
+          setStreetCount={setStreetCount}
+        />
         {props.allStreets.map((street) => (
           <StreetPost
             authorId={street.authorId}
@@ -51,6 +58,8 @@ const StreetFeed = (props) => {
             userName={street.User.userName}
             count={count}
             setCount={setCount}
+            streetCount={streetCount}
+            setStreetCount={setStreetCount}
           />
         ))}
       </div>
