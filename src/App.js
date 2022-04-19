@@ -8,7 +8,8 @@ import StreetFeed from './pages/StreetFeed'
 
 export default function App() {
   const [user, setUser] = useState(null)
-
+  const [allStreets, setAllStreets] = useState([])
+  //console.log('allStreets', allStreets)
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
@@ -33,7 +34,14 @@ export default function App() {
           <Route path="/" element={<SignIn setUser={setUser} />} />
           <Route
             path="/streetfeed"
-            element={<StreetFeed user={user} handleLogOut={handleLogOut} />}
+            element={
+              <StreetFeed
+                user={user}
+                handleLogOut={handleLogOut}
+                setAllStreets={setAllStreets}
+                allStreets={allStreets}
+              />
+            }
           />
         </Routes>
       </main>
