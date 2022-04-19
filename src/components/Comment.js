@@ -7,6 +7,10 @@ import Client from '../services/api'
 
 const Comment = (props) => {
   const [isClicked, setClicked] = useState(false)
+  const [updateComment, setUpdateComment] = useState({
+    content: '',
+    isEdited: false
+  })
 
   const green = '#018749'
   const black = '#000000'
@@ -25,6 +29,24 @@ const Comment = (props) => {
     props.setCommentCount(props.commentCount + 1)
   }
 
+  const updateCommentHandleChange = async (e) => {
+    e.preventDefault()
+    console.log(updateComment)
+    //console.log('Before', updateComment)
+    //console.log('After', updateComment)
+    const res = await Client.put(
+      `http://localhost:3001/comment/${props.user.id}/update/${props.commentid}`,
+      updateComment
+    )
+      .then((res) => console.log('update comment successful'))
+      .catch((err) => console.log(err.data))
+    setUpdateComment({
+      content: '',
+      isEdited: false
+    })
+    props.setCommentCount(props.commentCount + 1)
+  }
+
   return (
     <div className="CommentContainer">
       {/* <h4>Comment</h4> */}
@@ -39,6 +61,29 @@ const Comment = (props) => {
       <FontAwesomeIcon icon={faPenToSquare} id="Edit" pull="right" />
       <h4>@{props.userName}</h4>
       <p>{props.content}</p>
+      <div>
+        <form
+          onSubmit={updateCommentHandleChange}
+          className="updateCommentForm"
+        >
+          <input
+            required
+            type="text"
+            value={updateComment.content}
+            placeholder="Edit Comment"
+            onChange={(e) =>
+              setUpdateComment({
+                ...updateComment,
+                content: e.target.value,
+                isEdited: true
+              })
+            }
+          ></input>
+          <button className="submitButton" text="Submit">
+            Edit Comment
+          </button>
+        </form>
+      </div>
       <FontAwesomeIcon
         icon={faRegThumb}
         id="RegLike"
