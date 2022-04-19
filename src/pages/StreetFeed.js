@@ -11,14 +11,15 @@ const StreetFeed = (props) => {
   let navigate = useNavigate()
 
   const [allStreets, setAllStreets] = useState([])
-  const getStreets = async () => {
-    const results = await GetStreets()
-    console.log(results)
-    setAllStreets(results)
-  }
+
   useEffect(() => {
+    const getStreets = async () => {
+      const results = await GetStreets()
+      console.log(results)
+      setAllStreets(results)
+    }
     getStreets()
-  }, [])
+  }, [allStreets.content])
 
   // useEffect(() => {
   //   const getNews = async () => {
@@ -39,7 +40,7 @@ const StreetFeed = (props) => {
         <p>Weather API Goes Here</p>
       </div>
       <div className="MainFeed">
-        <StreetForm user={props.user} getStreets={getStreets} />
+        <StreetForm user={props.user} />
         {allStreets.map((street) => (
           <StreetPost
             authorId={street.authorId}

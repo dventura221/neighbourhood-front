@@ -17,7 +17,7 @@ const StreetForm = (props) => {
       .then((res) => console.log('successful'))
       .catch((err) => console.log(err.data))
     setStreetValues({ content: '' })
-    props.getStreets()
+    // props.getStreets()
   }
 
   const handleChange = (e) => {
