@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp as faRegThumb } from '@fortawesome/free-regular-svg-icons'
+import Client from '../services/api'
 
 const Comment = (props) => {
   const [isClicked, setClicked] = useState(false)
@@ -11,6 +12,15 @@ const Comment = (props) => {
   const toggleClick = (e) => {
     e.preventDefault()
     setClicked(!isClicked)
+  }
+
+  const deleteCommentHandler = async () => {
+    const res = await Client.delete(
+      `http://localhost:3001/comment/${props.user.id}/delete/${props.commentid}`
+    )
+      .then((res) => console.log('delete comment successful'))
+      .catch((err) => console.log(err.data))
+    props.setCount(props.count + 1)
   }
 
   return (
@@ -27,6 +37,9 @@ const Comment = (props) => {
         onClick={toggleClick}
         color={!isClicked ? green : black}
       />
+      <button className="btn btn-danger" onClick={deleteCommentHandler}>
+        Delete
+      </button>
     </div>
   )
 }
