@@ -9,16 +9,16 @@ import { useNavigate } from 'react-router-dom'
 
 const StreetFeed = (props) => {
   let navigate = useNavigate()
+  const [count, setCount] = useState(0)
 
-  const [allStreets, setAllStreets] = useState([])
-  const getStreets = async () => {
-    const results = await GetStreets()
-    console.log(results)
-    setAllStreets(results)
-  }
   useEffect(() => {
+    const getStreets = async () => {
+      const results = await GetStreets()
+      console.log(results)
+      props.setAllStreets(results)
+    }
     getStreets()
-  }, [])
+  }, [count])
 
   // useEffect(() => {
   //   const getNews = async () => {
@@ -39,14 +39,16 @@ const StreetFeed = (props) => {
         <p>Weather API Goes Here</p>
       </div>
       <div className="MainFeed">
-        <StreetForm user={props.user} getStreets={getStreets} />
-        {allStreets.map((street) => (
+        <StreetForm user={props.user} count={count} setCount={setCount} />
+        {props.allStreets.map((street) => (
           <StreetPost
             authorId={street.authorId}
             content={street.content}
             key={street.id}
             id={street.id}
             user={props.user}
+            count={count}
+            setCount={setCount}
           />
         ))}
       </div>

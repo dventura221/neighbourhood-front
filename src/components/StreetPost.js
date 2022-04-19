@@ -14,15 +14,16 @@ const StreetPost = (props) => {
   const [allComments, setAllComments] = useState([])
   const [isClicked, setClicked] = useState(false)
 
-  const getComments = async () => {
-    const results = await Client.get(
-      `http://localhost:3001/comment/${props.id}`
-    )
-    setAllComments(results.data)
-  }
   useEffect(() => {
+    const getComments = async () => {
+      const results = await Client.get(
+        `http://localhost:3001/comment/${props.id}`
+      )
+      //console.log('getComments useEffect', results)
+      setAllComments(results.data)
+    }
     getComments()
-  }, [props.id])
+  }, [props.count])
 
   const changeStyle = (e) => {
     e.preventDefault()
@@ -64,7 +65,9 @@ const StreetPost = (props) => {
       <CommentForm
         user={props.user}
         streetId={props.id}
-        getComments={getComments}
+        // getComments={getComments}
+        count={props.count}
+        setCount={props.setCount}
       />
     </div>
   )
