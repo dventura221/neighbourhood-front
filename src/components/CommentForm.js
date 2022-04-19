@@ -24,7 +24,7 @@ const CommentForm = (props) => {
   }
 
   return (
-    <div className="Comment">
+    <div className="CommentForm">
       <form onSubmit={handleSubmit}>
         <textarea
           required

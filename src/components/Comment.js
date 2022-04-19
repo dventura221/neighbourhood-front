@@ -1,15 +1,28 @@
-//import { useState } from 'react'
-//import axios from 'axios'
-//import { useNavigate } from 'react-router-dom'
-import CommentForm from './CommentForm'
+import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp as faRegThumb } from '@fortawesome/free-regular-svg-icons'
 
 const Comment = (props) => {
+  const [isClicked, setClicked] = useState(false)
+  const changeColor = (e) => {
+    e.preventDefault()
+    setClicked(!isClicked)
+    e.target.style.color = '#01796F'
+  }
+
   return (
-    <div>
-      <h4>Comment</h4>
-      <h5>Author: {props.authorId} </h5>
-      <h5>Street: {props.streetId}</h5>
-      <p>Comment Content: {props.content}</p>
+    <div className="CommentContainer">
+      {/* <h4>Comment</h4> */}
+      {/* <h5>Author: {props.authorId} </h5> */}
+      {/* <h5>Street: {props.streetId}</h5> */}
+      <h4>@user_name</h4>
+      <p>{props.content}</p>
+      <FontAwesomeIcon
+        icon={faRegThumb}
+        id="RegLike"
+        pull="right"
+        onClick={changeColor}
+      />
     </div>
   )
 }
