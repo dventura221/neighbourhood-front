@@ -219,6 +219,8 @@
 
 .CommentForm {
   clear: both;
+  position: relative;
+  margin-bottom: 9.5%;
 }
 
 .CommentForm textarea {
@@ -226,6 +228,7 @@
   float: right;
   text-align: left;
   margin-top: -3.5%;
+  margin-bottom: 1.5%;
   border: 1px solid rgb(128, 128, 128, 0.2);
   border-radius: 10px;
   padding: 7.5px;
@@ -255,17 +258,18 @@
   text-transform: lowercase;
 }
 
-.CommentButton {
-  display: block;
-  margin-left: auto;
-  margin-right: 0;
-  clear: both;
+#StreetButton:hover {
+  cursor: pointer;
 }
 
 #RegHeart {
   margin-top: 2%;
   margin-left: 10%;
   font-size: 20px;
+}
+
+#RegHeart:hover {
+  cursor: pointer;
 }
 
 #SolidHeart {
@@ -275,10 +279,18 @@
   font-size: 20px;
 }
 
+#SolidHeart:hover {
+  cursor: pointer;
+}
+
 #ConvoBubble {
   margin-top: 2%;
   margin-left: 7.5%;
   font-size: 20px;
+}
+
+#ConvoBubble:hover {
+  cursor: pointer;
 }
 
 #RegLike {
@@ -288,4 +300,17 @@
   font-size: 20px;
 }
 
+#RegLike:hover {
+  cursor: pointer;
+}
+
+#CommentButton {
+  position: absolute;
+  right: 0;
+  margin-right: 2.5%;
+}
+
+#CommentButton:hover {
+  cursor: pointer;
+}
 

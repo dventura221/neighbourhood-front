@@ -34,7 +34,7 @@ const CommentForm = (props) => {
           placeholder="Add a comment!"
           onChange={handleChange}
         ></textarea>
-        <button className="CommentButton">Post</button>
+        <button id="CommentButton">Post</button>
       </form>
     </div>
   )

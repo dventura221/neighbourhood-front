@@ -13,6 +13,7 @@ const StreetFeed = (props) => {
   const [allStreets, setAllStreets] = useState([])
   const getStreets = async () => {
     const results = await GetStreets()
+    console.log(results)
     setAllStreets(results)
   }
   useEffect(() => {

@@ -4,10 +4,13 @@ import { faThumbsUp as faRegThumb } from '@fortawesome/free-regular-svg-icons'
 
 const Comment = (props) => {
   const [isClicked, setClicked] = useState(false)
-  const changeColor = (e) => {
+
+  const green = '#01796F'
+  const black = '#000000'
+
+  const toggleClick = (e) => {
     e.preventDefault()
     setClicked(!isClicked)
-    e.target.style.color = '#01796F'
   }
 
   return (
@@ -21,7 +24,8 @@ const Comment = (props) => {
         icon={faRegThumb}
         id="RegLike"
         pull="right"
-        onClick={changeColor}
+        onClick={toggleClick}
+        color={!isClicked ? green : black}
       />
     </div>
   )
