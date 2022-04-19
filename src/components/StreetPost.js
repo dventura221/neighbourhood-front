@@ -12,7 +12,8 @@ import Client from '../services/api'
 const StreetPost = (props) => {
   //let { id } = useParams()
   const [allComments, setAllComments] = useState([])
-  const [isClicked, setClicked] = useState(false)
+  const [heartClicked, toggleHeart] = useState(false)
+  const [convoClicked, toggleConvo] = useState(false)
 
   useEffect(() => {
     const getComments = async () => {
@@ -27,19 +28,24 @@ const StreetPost = (props) => {
 
   const changeStyle = (e) => {
     e.preventDefault()
-    setClicked(!isClicked)
+    toggleHeart(!heartClicked)
+  }
+
+  const displayComments = (e) => {
+    e.preventDefault()
+    toggleConvo(!convoClicked)
   }
 
   return (
     <div className="PostFeed">
       {/* <p>Street {props.id}</p> */}
       <div className="PostContainer PostContent">
-        <span id="Name">Jane Doe</span>
-        <span id="Handle">@user_name</span>
+        <span id="Name">{props.firstName}</span>
+        <span id="Handle">@{props.userName}</span>
         <p id="FeedContent">{props.content}</p>
       </div>
       <div className="IconBar">
-        {!isClicked ? (
+        {!heartClicked ? (
           <FontAwesomeIcon
             icon={faHeartRegular}
             id="RegHeart"
@@ -52,16 +58,22 @@ const StreetPost = (props) => {
             onClick={changeStyle}
           />
         )}
-        <FontAwesomeIcon icon={faComment} id="ConvoBubble" />
-      </div>
-      {allComments.map((comment) => (
-        <Comment
-          key={comment.id}
-          // streetId={comment.streetId}
-          authorId={comment.authorId}
-          content={comment.content}
+        <FontAwesomeIcon
+          icon={faComment}
+          id="ConvoBubble"
+          onClick={displayComments}
         />
-      ))}
+      </div>
+      {!convoClicked &&
+        allComments.map((comment) => (
+          <Comment
+            key={comment.id}
+            // streetId={comment.streetId}
+            authorId={comment.authorId}
+            content={comment.content}
+            userName={comment.User.userName}
+          />
+        ))}
       <CommentForm
         user={props.user}
         streetId={props.id}
