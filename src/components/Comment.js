@@ -30,7 +30,12 @@ const Comment = (props) => {
       {/* <h4>Comment</h4> */}
       {/* <h5>Author: {props.authorId} </h5> */}
       {/* <h5>Street: {props.streetId}</h5> */}
-      <FontAwesomeIcon icon={faXmark} id="Close" pull="right" />
+      <FontAwesomeIcon
+        icon={faXmark}
+        id="Close"
+        onClick={deleteCommentHandler}
+        pull="right"
+      />
       <FontAwesomeIcon icon={faPenToSquare} id="Edit" pull="right" />
       <h4>@{props.userName}</h4>
       <p>{props.content}</p>
@@ -41,9 +46,6 @@ const Comment = (props) => {
         onClick={toggleClick}
         color={!isClicked ? green : black}
       />
-      <button className="btn btn-danger" onClick={deleteCommentHandler}>
-        Delete
-      </button>
     </div>
   )
 }
