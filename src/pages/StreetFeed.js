@@ -13,6 +13,7 @@ const StreetFeed = (props) => {
   const [allStreets, setAllStreets] = useState([])
   const getStreets = async () => {
     const results = await GetStreets()
+    console.log(results)
     setAllStreets(results)
   }
   useEffect(() => {
@@ -39,24 +40,22 @@ const StreetFeed = (props) => {
       </div>
       <div className="MainFeed">
         <StreetForm user={props.user} getStreets={getStreets} />
-        <div className="StreetMap">
-          {allStreets.map((street) => (
-            <StreetPost
-              authorId={street.authorId}
-              content={street.content}
-              key={street.id}
-              id={street.id}
-              user={props.user}
-            />
-          ))}
-        </div>
+        {allStreets.map((street) => (
+          <StreetPost
+            authorId={street.authorId}
+            content={street.content}
+            key={street.id}
+            id={street.id}
+            user={props.user}
+          />
+        ))}
       </div>
       <div className="RightBar">
         <p>News API Goes Here</p>
       </div>
     </div>
   ) : (
-    <div className="protected">
+    <div className="Protected">
       <h3>Oops! You must be signed in to do that!</h3>
       <button onClick={() => navigate('/')}>Sign In</button>
     </div>

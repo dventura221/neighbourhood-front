@@ -32,11 +32,11 @@ const StreetPost = (props) => {
   return (
     <div className="PostFeed">
       {/* <p>Street {props.id}</p> */}
-      <p className="PostContainer PostContent">
+      <div className="PostContainer PostContent">
         <span id="Name">Jane Doe</span>
         <span id="Handle">@user_name</span>
-        <div id="FeedContent">{props.content}</div>
-      </p>
+        <p id="FeedContent">{props.content}</p>
+      </div>
       <div className="IconBar">
         {!isClicked ? (
           <FontAwesomeIcon
@@ -52,35 +52,20 @@ const StreetPost = (props) => {
           />
         )}
         <FontAwesomeIcon icon={faComment} id="ConvoBubble" />
-        {allComments.map((comment) => (
-          <Comment
-            key={comment.id}
-            streetId={comment.streetId}
-            authorId={comment.authorId}
-            content={comment.content}
-          />
-        ))}
       </div>
-      <div className="StreetPost">
-        {/* <p>Street {props.id}</p> */}
-        <CommentForm
-          user={props.user}
-          streetId={props.id}
-          getComments={getComments}
+      {allComments.map((comment) => (
+        <Comment
+          key={comment.id}
+          // streetId={comment.streetId}
+          authorId={comment.authorId}
+          content={comment.content}
         />
-        {allComments.map((comment) => (
-          <Comment
-            key={comment.id}
-            streetId={comment.streetId}
-            authorId={comment.authorId}
-            content={comment.content}
-          />
-        ))}
-        {/* Add conditional render the multiple
-        comments. */}
-      </div>
-      {/* Add conditional render the multiple
-        comments. */}
+      ))}
+      <CommentForm
+        user={props.user}
+        streetId={props.id}
+        getComments={getComments}
+      />
     </div>
   )
 }

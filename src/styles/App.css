@@ -114,6 +114,7 @@
   padding: 15px;
   margin-left: 5%;
   margin-right: 5%;
+  margin-top: 2.5%;
   border-bottom: 1px solid rgb(128, 128, 128, 0.5);
 }
 
@@ -122,7 +123,6 @@
   margin-left: 5%;
   margin-right: 5%;
   border-bottom: 1px solid rgb(128, 128, 128, 0.5);
-  position: relative;
 }
 
 .StreetPost p {
@@ -170,6 +170,7 @@
   height: auto;
   padding: 10px;
   margin-bottom: 1.5%;
+  margin-top: 1.5%;
   font-family: Arial;
   font-size: 16px;
   border: 1px solid rgb(128, 128, 128, 0.2);
@@ -184,9 +185,57 @@
   text-align: left;
 }
 
+.PostContent p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .IconBar {
   text-align: left;
+  width: 20%;
 }
+
+.CommentContainer {
+  width: 75%;
+  float: right;
+  text-align: left;
+  border: 1px solid rgb(128, 128, 128, 0.2);
+  border-radius: 10px;
+  margin-top: -3.5%;
+  margin-bottom: 5%;
+  padding: 7.5px;
+}
+
+.CommentContainer h4 {
+  margin: 0;
+  padding-left: 5px;
+}
+
+.CommentContainer p {
+  margin: 0;
+  padding-left: 5px;
+  padding-top: 3.5px;
+}
+
+.CommentForm {
+  clear: both;
+  position: relative;
+  margin-bottom: 9.5%;
+}
+
+.CommentForm textarea {
+  width: 75%;
+  float: right;
+  text-align: left;
+  margin-top: -3.5%;
+  margin-bottom: 1.5%;
+  border: 1px solid rgb(128, 128, 128, 0.2);
+  border-radius: 10px;
+  padding: 7.5px;
+  resize: none;
+  font-family: Arial;
+  font-size: 16px;
+  }
 
 #FeedContent {
   padding-top: .75%;
@@ -209,31 +258,59 @@
   text-transform: lowercase;
 }
 
+#StreetButton:hover {
+  cursor: pointer;
+}
+
 #RegHeart {
   margin-top: 2%;
-  margin-left: 2%;
+  margin-left: 10%;
   font-size: 20px;
+}
+
+#RegHeart:hover {
+  cursor: pointer;
 }
 
 #SolidHeart {
   color: red;
   margin-top: 2%;
-  margin-left: 2%;
+  margin-left: 10%;
   font-size: 20px;
+}
+
+#SolidHeart:hover {
+  cursor: pointer;
 }
 
 #ConvoBubble {
   margin-top: 2%;
-  margin-left: 1.5%;
+  margin-left: 7.5%;
   font-size: 20px;
 }
 
-.Comment {
-  position: relative;
+#ConvoBubble:hover {
+  cursor: pointer;
 }
 
-.CommentButton {
-  display: block;
-  margin-right: 0;
-  margin-left: auto;
+#RegLike {
+  margin-top: -5%;
+  margin-right: 2%;
+  margin-bottom: 1%;
+  font-size: 20px;
 }
+
+#RegLike:hover {
+  cursor: pointer;
+}
+
+#CommentButton {
+  position: absolute;
+  right: 0;
+  margin-right: 2.5%;
+}
+
+#CommentButton:hover {
+  cursor: pointer;
+}
+
