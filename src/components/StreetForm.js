@@ -27,9 +27,6 @@ const StreetForm = (props) => {
   return (
     <div className="StreetPost">
       <form onSubmit={handleSubmit}>
-        <p>
-          Jane Doe <span id="Handle">@user_name</span>
-        </p>
         <textarea
           rows="3"
           required

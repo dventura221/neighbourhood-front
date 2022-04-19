@@ -47,6 +47,8 @@ const StreetFeed = (props) => {
             key={street.id}
             id={street.id}
             user={props.user}
+            firstName={street.User.firstName}
+            userName={street.User.userName}
             count={count}
             setCount={setCount}
           />
