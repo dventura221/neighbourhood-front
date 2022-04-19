@@ -3,14 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-regular-svg-icons'
-//import { useParams } from 'react-router-dom'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import CommentForm from './CommentForm'
 import Comment from './Comment'
 import Client from '../services/api'
 
 const StreetPost = (props) => {
   const [allComments, setAllComments] = useState([])
-  const [isClicked, setClicked] = useState(false)
   const [commentCount, setCommentCount] = useState(10000)
   const [heartClicked, toggleHeart] = useState(false)
   const [convoClicked, toggleConvo] = useState(false)
@@ -47,12 +47,20 @@ const StreetPost = (props) => {
   return (
     <div className="PostFeed">
       <div className="PostContainer PostContent">
+        {props.user.id === props.authorId ? (
+          <FontAwesomeIcon
+            icon={faXmark}
+            id="StreetClose"
+            onClick={deleteStreetHandler}
+            pull="right"
+          />
+        ) : null}
+        {props.user.id === props.authorId ? (
+          <FontAwesomeIcon icon={faPenToSquare} id="StreetEdit" pull="right" />
+        ) : null}
         <span id="Name">{props.firstName}</span>
         <span id="Handle">@{props.userName}</span>
         <p id="FeedContent">{props.content}</p>
-        <button className="btn btn-danger" onClick={deleteStreetHandler}>
-          Delete
-        </button>
       </div>
       <div className="IconBar">
         {!heartClicked ? (
