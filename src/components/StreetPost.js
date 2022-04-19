@@ -68,10 +68,14 @@ const StreetPost = (props) => {
         allComments.map((comment) => (
           <Comment
             key={comment.id}
+            commentid={comment.id}
             // streetId={comment.streetId}
             authorId={comment.authorId}
             content={comment.content}
-            userName={comment.User.userName}
+            userName={comment.User.userName} 
+            user={props.user}
+            count={props.count}
+            setCount={props.setCount}
           />
         ))}
       <CommentForm
