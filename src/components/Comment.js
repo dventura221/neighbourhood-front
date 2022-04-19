@@ -22,7 +22,7 @@ const Comment = (props) => {
     )
       .then((res) => console.log('delete comment successful'))
       .catch((err) => console.log(err.data))
-    props.setCount(props.count + 1)
+    props.setCommentCount(props.commentCount + 1)
   }
 
   return (
