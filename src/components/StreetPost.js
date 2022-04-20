@@ -99,7 +99,7 @@ const StreetPost = (props) => {
               }
             ></input>
             <button className="submitButton" text="Submit">
-              Edit Comment
+              Edit Street
             </button>
           </form>
         </div>
