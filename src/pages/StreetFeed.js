@@ -60,6 +60,7 @@ const StreetFeed = (props) => {
             setCount={setCount}
             streetCount={streetCount}
             setStreetCount={setStreetCount}
+            avatar={street.User.avatar}
           />
         ))}
       </div>

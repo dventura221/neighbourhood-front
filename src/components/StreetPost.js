@@ -77,6 +77,9 @@ const StreetPost = (props) => {
         {props.user.id === props.authorId ? (
           <FontAwesomeIcon icon={faPenToSquare} id="StreetEdit" pull="right" />
         ) : null}
+        <span>
+          <img src={props.avatar} alt="avatar" />
+        </span>
         <span id="Name">{props.firstName}</span>
         <span id="Handle">@{props.userName}</span>
         <p id="FeedContent">{props.content}</p>
