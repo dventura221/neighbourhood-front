@@ -24,7 +24,6 @@ const Comment = (props) => {
   const makeEdits = (e) => {
     e.preventDefault()
     toggleEdit(!canEdit)
-    console.log('Working')
   }
 
   const handleChange = (e) => {
@@ -80,7 +79,7 @@ const Comment = (props) => {
       ) : null}
       <h4>@{props.userName}</h4>
       <div
-        className="EditField"
+        className="EditComment"
         contentEditable={
           canEdit && props.user.id === props.authorId ? true : null
         }

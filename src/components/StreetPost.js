@@ -18,6 +18,31 @@ const StreetPost = (props) => {
     content: '',
     isEdited: false
   })
+  const [canEdit, toggleEdit] = useState(false)
+
+  const changeStyle = (e) => {
+    e.preventDefault()
+    toggleHeart(!heartClicked)
+  }
+
+  const displayComments = (e) => {
+    e.preventDefault()
+    toggleConvo(!convoClicked)
+  }
+
+  const makeEdits = (e) => {
+    e.preventDefault()
+    toggleEdit(!canEdit)
+  }
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setUpdateStreet({
+      ...updateStreet,
+      content: e.currentTarget.textContent,
+      isEdited: true
+    })
+  }
 
   useEffect(() => {
     const getComments = async () => {
@@ -83,60 +108,70 @@ const StreetPost = (props) => {
       .catch((err) => console.log(err.data))
   }
 
-  const changeStyle = (e) => {
-    e.preventDefault()
-    toggleHeart(!heartClicked)
-  }
-
-  const displayComments = (e) => {
-    e.preventDefault()
-    toggleConvo(!convoClicked)
-  }
-
   return (
     <div className="PostFeed">
       <div className="PostContainer PostContent">
         {props.user.id === props.authorId ? (
           <FontAwesomeIcon
             icon={faXmark}
-            id="StreetClose"
+            id="Close"
             onClick={deleteStreetHandler}
             pull="right"
           />
         ) : null}
         {props.user.id === props.authorId ? (
-          <FontAwesomeIcon icon={faPenToSquare} id="StreetEdit" pull="right" />
+          <FontAwesomeIcon
+            icon={faPenToSquare}
+            id="Edit"
+            onClick={makeEdits}
+            pull="right"
+          />
         ) : null}
         <span>
           <img src={props.avatar} alt="avatar" />
         </span>
         <span id="Name">{props.firstName}</span>
         <span id="Handle">@{props.userName}</span>
-        <p id="FeedContent">{props.content}</p>
-        <div>
-          <form
-            onSubmit={updateStreetHandleChange}
-            className="updateCommentForm"
-          >
-            <input
-              required
-              type="text"
-              value={updateStreet.content}
-              placeholder="Edit Street"
-              onChange={(e) =>
-                setUpdateStreet({
-                  ...updateStreet,
-                  content: e.target.value,
-                  isEdited: true
-                })
-              }
-            ></input>
-            <button className="submitButton" text="Submit">
-              Edit Street
-            </button>
-          </form>
+        <div
+          className="EditStreet"
+          id="FeedContent"
+          contentEditable={
+            canEdit && props.user.id === props.authorId ? true : null
+          }
+          onInput={handleChange}
+        >
+          {props.content}
         </div>
+        {props.user.id === props.authorId && canEdit ? (
+          <button
+            onClick={(e) => {
+              updateStreetHandleChange(e)
+              toggleEdit(false)
+            }}
+          >
+            Comment
+          </button>
+        ) : null}
       </div>
+      {/* <form onSubmit={updateStreetHandleChange} className="updateCommentForm">
+          <input
+            required
+            type="text"
+            value={updateStreet.content}
+            placeholder="Edit Street"
+            onChange={(e) =>
+              setUpdateStreet({
+                ...updateStreet,
+                content: e.target.value,
+                isEdited: true
+              })
+            }
+          ></input>
+        </form>
+        <button className="submitButton" text="Submit">
+          Edit Street
+        </button>
+      </div> */}
       <div className="IconBar">
         {!heartClicked ? (
           <FontAwesomeIcon

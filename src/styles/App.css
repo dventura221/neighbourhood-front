@@ -190,6 +190,13 @@
   margin-bottom: 0;
 }
 
+.EditStreet {
+  width: 85%;
+  padding: 5px 0;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}
+
 .IconBar {
   text-align: left;
   width: 20%;
@@ -212,7 +219,7 @@
   padding-left: 5px;
 }
 
-.CommentContainer p {
+.EditComment {
   margin: 0;
   padding-left: 5px;
   padding-top: 3.5px;
@@ -237,6 +244,10 @@
   resize: none;
   font-family: Arial;
   font-size: 16px;
+  }
+
+  .EditField {
+    padding-left: 5px;
   }
 
 #FeedContent {
@@ -324,12 +335,12 @@
 
 #Close {
   font-size: 20px;
-  margin-right: 2.5%;
-  padding-top: 1.25%;
+  margin-right: 5px;
+  padding-top: 5px;
 }
 
 #Edit {
   font-size: 20px;
-  padding-top: 1.05%;
-  margin-right: .5%;
+  margin-right: 3.5px;
+  padding-top: 5px;
 }
