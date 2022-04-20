@@ -13,11 +13,13 @@ const StreetPost = (props) => {
   const [allComments, setAllComments] = useState([])
   const [commentCount, setCommentCount] = useState(10000)
   const [heartClicked, toggleHeart] = useState(false)
+  const [likeCount, setLikeCount] = useState(0)
   const [convoClicked, toggleConvo] = useState(false)
   const [updateStreet, setUpdateStreet] = useState({
     content: '',
     isEdited: false
   })
+  
   const [canEdit, toggleEdit] = useState(false)
 
   const changeStyle = (e) => {
@@ -50,20 +52,28 @@ const StreetPost = (props) => {
         `http://localhost:3001/comment/${props.id}`
       )
       setAllComments(results.data)
+      console.log('get all comments', results.data)
     }
     const checkLikes = async () => {
       const likeResults = await Client.get(
         `http://localhost:3001/street/${props.user.id}/like/${props.id}`
       )
-      console.log('likeResults', likeResults)
       if (likeResults.data > 0) {
         toggleHeart(true)
       } else {
         toggleHeart(false)
       }
     }
+    const getLikeCount = async () => {
+      const likeCountResults = await Client.get(
+        `http://localhost:3001/street/like/${props.id}`
+      )
+      setLikeCount(likeCountResults.data.number)
+      props.setCount(props.count + 1)
+    }
     getComments()
     checkLikes()
+    getLikeCount()
   }, [commentCount])
 
   const deleteStreetHandler = async () => {
@@ -128,7 +138,7 @@ const StreetPost = (props) => {
           />
         ) : null}
         <span>
-          <img src={props.avatar} alt="avatar" />
+          <img src={props.avatar} alt="avatar" className="streetAvatar" />
         </span>
         <span id="Name">{props.firstName}</span>
         <span id="Handle">@{props.userName}</span>
@@ -192,6 +202,7 @@ const StreetPost = (props) => {
             }}
           />
         )}
+        <span className="likeCount">{likeCount > 0 ? likeCount : null}</span>
         <FontAwesomeIcon
           icon={faComment}
           id="ConvoBubble"
@@ -211,6 +222,7 @@ const StreetPost = (props) => {
             setCount={props.setCount}
             commentCount={commentCount}
             setCommentCount={setCommentCount}
+            avatar={comment.User.avatar}
           />
         ))}
       <CommentForm

@@ -77,6 +77,13 @@ const Comment = (props) => {
           pull="right"
         />
       ) : null}
+      <span>
+        <img
+          src={props.avatar}
+          alt="comment avatar"
+          className="commentAvatar"
+        />
+      </span>
       <h4>@{props.userName}</h4>
       <div
         className="EditComment"
@@ -112,7 +119,7 @@ const Comment = (props) => {
           id="RegLike"
           pull="left"
           onClick={toggleClick}
-          color={!isClicked ? green : black}
+          color={!isClicked ? black : green}
         />
       ) : null}
     </div>
