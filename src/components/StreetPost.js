@@ -15,11 +15,12 @@ const StreetPost = (props) => {
   const [heartClicked, toggleHeart] = useState(false)
   const [likeCount, setLikeCount] = useState(0)
   const [convoClicked, toggleConvo] = useState(false)
+  const [altCount, setAltCount] = useState(100)
   const [updateStreet, setUpdateStreet] = useState({
     content: '',
     isEdited: false
   })
-  
+
   const [canEdit, toggleEdit] = useState(false)
 
   const changeStyle = (e) => {
@@ -52,7 +53,6 @@ const StreetPost = (props) => {
         `http://localhost:3001/comment/${props.id}`
       )
       setAllComments(results.data)
-      console.log('get all comments', results.data)
     }
     const checkLikes = async () => {
       const likeResults = await Client.get(
@@ -69,12 +69,11 @@ const StreetPost = (props) => {
         `http://localhost:3001/street/like/${props.id}`
       )
       setLikeCount(likeCountResults.data.number)
-      props.setCount(props.count + 1)
     }
     getComments()
     checkLikes()
     getLikeCount()
-  }, [commentCount])
+  }, [commentCount, altCount])
 
   const deleteStreetHandler = async () => {
     const res = await Client.delete(
@@ -107,6 +106,7 @@ const StreetPost = (props) => {
     )
       .then((res) => console.log('like street successful'))
       .catch((err) => console.log(err.data))
+    setAltCount(altCount + 1)
   }
 
   const unlikeStreetHandler = async (e) => {
@@ -116,6 +116,7 @@ const StreetPost = (props) => {
     )
       .then((res) => console.log('unlike street successful'))
       .catch((err) => console.log(err.data))
+    setAltCount(altCount + 1)
   }
 
   return (
