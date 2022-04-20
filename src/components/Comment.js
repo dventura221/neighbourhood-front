@@ -78,6 +78,13 @@ const Comment = (props) => {
           pull="right"
         />
       ) : null}
+      <span>
+        <img
+          src={props.avatar}
+          alt="comment avatar"
+          className="commentAvatar"
+        />
+      </span>
       <h4>@{props.userName}</h4>
       <div
         className="EditField"
