@@ -132,7 +132,6 @@ const StreetPost = (props) => {
           <Comment
             key={comment.id}
             commentid={comment.id}
-            // streetId={comment.streetId}
             authorId={comment.authorId}
             content={comment.content}
             userName={comment.User.userName}
