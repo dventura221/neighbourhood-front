@@ -30,7 +30,8 @@ const StreetPost = (props) => {
       const likeResults = await Client.get(
         `http://localhost:3001/street/${props.user.id}/like/${props.id}`
       )
-      if (likeResults.data === 'already liked') {
+      console.log('likeResults', likeResults)
+      if (likeResults.data > 0) {
         toggleHeart(true)
       } else {
         toggleHeart(false)
