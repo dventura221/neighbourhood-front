@@ -26,7 +26,18 @@ const StreetPost = (props) => {
       )
       setAllComments(results.data)
     }
+    const checkLikes = async () => {
+      const likeResults = await Client.get(
+        `http://localhost:3001/street/${props.user.id}/like/${props.id}`
+      )
+      if (likeResults.data === 'already liked') {
+        toggleHeart(true)
+      } else {
+        toggleHeart(false)
+      }
+    }
     getComments()
+    checkLikes()
   }, [commentCount])
 
   const deleteStreetHandler = async () => {
@@ -56,9 +67,18 @@ const StreetPost = (props) => {
   const likeStreetHandler = async (e) => {
     e.preventDefault()
     const res = await Client.post(
-      `http://localhost:3001/street/${props.user.id}/update/${props.id}`
+      `http://localhost:3001/street/${props.user.id}/like/${props.id}`
     )
       .then((res) => console.log('like street successful'))
+      .catch((err) => console.log(err.data))
+  }
+
+  const unlikeStreetHandler = async (e) => {
+    e.preventDefault()
+    const res = await Client.delete(
+      `http://localhost:3001/street/${props.user.id}/like/${props.id}`
+    )
+      .then((res) => console.log('unlike street successful'))
       .catch((err) => console.log(err.data))
   }
 
@@ -121,16 +141,19 @@ const StreetPost = (props) => {
           <FontAwesomeIcon
             icon={faHeartRegular}
             id="RegHeart"
-            onClick={() => {
-              changeStyle()
-              likeStreetHandler()
+            onClick={(e) => {
+              changeStyle(e)
+              likeStreetHandler(e)
             }}
           />
         ) : (
           <FontAwesomeIcon
             icon={faHeartSolid}
             id="SolidHeart"
-            onClick={changeStyle}
+            onClick={(e) => {
+              changeStyle(e)
+              unlikeStreetHandler(e)
+            }}
           />
         )}
         <FontAwesomeIcon
