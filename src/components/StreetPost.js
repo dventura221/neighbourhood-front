@@ -26,12 +26,12 @@ const StreetPost = (props) => {
         `http://localhost:3001/comment/${props.id}`
       )
       setAllComments(results.data)
+      console.log('get all comments', results.data)
     }
     const checkLikes = async () => {
       const likeResults = await Client.get(
         `http://localhost:3001/street/${props.user.id}/like/${props.id}`
       )
-      //console.log('likeResults', likeResults)
       if (likeResults.data > 0) {
         toggleHeart(true)
       } else {
@@ -42,9 +42,8 @@ const StreetPost = (props) => {
       const likeCountResults = await Client.get(
         `http://localhost:3001/street/like/${props.id}`
       )
-      //console.log(likeCountResults)
       setLikeCount(likeCountResults.data.number)
-      setCommentCount(commentCount + 1)
+      props.setCount(props.count + 1)
     }
     getComments()
     checkLikes()
@@ -118,7 +117,7 @@ const StreetPost = (props) => {
           <FontAwesomeIcon icon={faPenToSquare} id="StreetEdit" pull="right" />
         ) : null}
         <span>
-          <img src={props.avatar} alt="avatar" />
+          <img src={props.avatar} alt="avatar" className="streetAvatar" />
         </span>
         <span id="Name">{props.firstName}</span>
         <span id="Handle">@{props.userName}</span>
@@ -187,6 +186,7 @@ const StreetPost = (props) => {
             setCount={props.setCount}
             commentCount={commentCount}
             setCommentCount={setCommentCount}
+            avatar={comment.User.avatar}
           />
         ))}
       <CommentForm
