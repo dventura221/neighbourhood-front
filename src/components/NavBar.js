@@ -17,6 +17,7 @@ const NavBar = (props) => {
       <Link to="/" onClick={props.handleLogOut}>
         Log Out
       </Link>
+      <Link to="/profile">Edit Profile</Link>
       <h2>welcome @{props.user.userName}!</h2>
     </div>
   )

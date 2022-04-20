@@ -5,11 +5,12 @@ import { CheckSession } from './services/Auth'
 // import NavBar from './components/NavBar'
 import SignIn from './pages/SignIn'
 import StreetFeed from './pages/StreetFeed'
+import UpdateUser from './pages/UpdateUser'
 
 export default function App() {
   const [user, setUser] = useState(null)
+
   const [allStreets, setAllStreets] = useState([])
-  //console.log('allStreets', allStreets)
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
@@ -43,6 +44,7 @@ export default function App() {
               />
             }
           />
+          <Route path="/profile" element={<UpdateUser user={user} />} />
         </Routes>
       </main>
     </div>
