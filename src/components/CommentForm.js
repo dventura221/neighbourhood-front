@@ -7,9 +7,9 @@ const CommentForm = (props) => {
 
   const [commentValues, setCommentValues] = useState({ content: '' })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    Client.post(
+    const res = await Client.post(
       `http://localhost:3001/comment/${props.user.id}/${props.streetId}/new`,
       commentValues
     )

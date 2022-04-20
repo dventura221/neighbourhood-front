@@ -53,6 +53,15 @@ const StreetPost = (props) => {
     setCommentCount(commentCount + 1)
   }
 
+  const likeStreetHandler = async (e) => {
+    e.preventDefault()
+    const res = await Client.post(
+      `http://localhost:3001/street/${props.user.id}/update/${props.id}`
+    )
+      .then((res) => console.log('like street successful'))
+      .catch((err) => console.log(err.data))
+  }
+
   const changeStyle = (e) => {
     e.preventDefault()
     toggleHeart(!heartClicked)
@@ -112,7 +121,10 @@ const StreetPost = (props) => {
           <FontAwesomeIcon
             icon={faHeartRegular}
             id="RegHeart"
-            onClick={changeStyle}
+            onClick={() => {
+              changeStyle()
+              likeStreetHandler()
+            }}
           />
         ) : (
           <FontAwesomeIcon
@@ -148,6 +160,8 @@ const StreetPost = (props) => {
         streetId={props.id}
         commentCount={commentCount}
         setCommentCount={setCommentCount}
+        allComments={allComments}
+        setAllComments={setAllComments}
       />
     </div>
   )

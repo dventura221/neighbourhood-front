@@ -8,9 +8,9 @@ const StreetForm = (props) => {
     content: ''
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    Client.post(
+    const res = await Client.post(
       `http://localhost:3001/street/${props.user.id}/new`,
       streetValues
     )
