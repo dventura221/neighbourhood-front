@@ -31,9 +31,6 @@ const Comment = (props) => {
 
   const updateCommentHandleChange = async (e) => {
     e.preventDefault()
-    console.log(updateComment)
-    //console.log('Before', updateComment)
-    //console.log('After', updateComment)
     const res = await Client.put(
       `http://localhost:3001/comment/${props.user.id}/update/${props.commentid}`,
       updateComment

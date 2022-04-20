@@ -14,6 +14,10 @@ const StreetPost = (props) => {
   const [commentCount, setCommentCount] = useState(10000)
   const [heartClicked, toggleHeart] = useState(false)
   const [convoClicked, toggleConvo] = useState(false)
+  const [updateStreet, setUpdateStreet] = useState({
+    content: '',
+    isEdited: false
+  })
 
   useEffect(() => {
     const getComments = async () => {
@@ -32,6 +36,21 @@ const StreetPost = (props) => {
       .then((res) => console.log('delete street successful'))
       .catch((err) => console.log(err.data))
     props.setStreetCount(props.streetCount + 1)
+  }
+
+  const updateStreetHandleChange = async (e) => {
+    e.preventDefault()
+    const res = await Client.put(
+      `http://localhost:3001/street/${props.user.id}/update/${props.id}`,
+      updateStreet
+    )
+      .then((res) => console.log('update street successful'))
+      .catch((err) => console.log(err.data))
+    setUpdateStreet({
+      content: '',
+      isEdited: false
+    })
+    setCommentCount(commentCount + 1)
   }
 
   const changeStyle = (e) => {
@@ -61,6 +80,29 @@ const StreetPost = (props) => {
         <span id="Name">{props.firstName}</span>
         <span id="Handle">@{props.userName}</span>
         <p id="FeedContent">{props.content}</p>
+        <div>
+          <form
+            onSubmit={updateStreetHandleChange}
+            className="updateCommentForm"
+          >
+            <input
+              required
+              type="text"
+              value={updateStreet.content}
+              placeholder="Edit Street"
+              onChange={(e) =>
+                setUpdateStreet({
+                  ...updateStreet,
+                  content: e.target.value,
+                  isEdited: true
+                })
+              }
+            ></input>
+            <button className="submitButton" text="Submit">
+              Edit Comment
+            </button>
+          </form>
+        </div>
       </div>
       <div className="IconBar">
         {!heartClicked ? (
