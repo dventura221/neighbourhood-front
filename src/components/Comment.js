@@ -82,16 +82,23 @@ const Comment = (props) => {
       <div
         className="EditField"
         contentEditable={
-          !canEdit && props.user.id === props.authorId ? true : null
+          canEdit && props.user.id === props.authorId ? true : null
         }
         onInput={handleChange}
       >
         {props.content} <br />
       </div>
-      {props.user.id === props.authorId && !canEdit ? (
-        <button onClick={updateCommentHandleChange}>Comment</button>
+      {props.user.id === props.authorId && canEdit ? (
+        <button
+          onClick={(e) => {
+            updateCommentHandleChange(e)
+            toggleEdit(false)
+          }}
+        >
+          Comment
+        </button>
       ) : null}
-      {props.user.id !== props.authorId ? (
+      {/* {props.user.id !== props.authorId ? (
         <FontAwesomeIcon
           icon={faRegThumb}
           id="RegLike"
@@ -99,8 +106,8 @@ const Comment = (props) => {
           onClick={toggleClick}
           color={!isClicked ? green : black}
         />
-      ) : null}
-      {canEdit ? (
+      ) : null} */}
+      {!canEdit ? (
         <FontAwesomeIcon
           icon={faRegThumb}
           id="RegLike"
