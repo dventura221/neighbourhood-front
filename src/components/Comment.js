@@ -7,6 +7,7 @@ import Client from '../services/api'
 
 const Comment = (props) => {
   const [isClicked, setClicked] = useState(false)
+  const [canEdit, toggleEdit] = useState(false)
   const [updateComment, setUpdateComment] = useState({
     content: '',
     isEdited: false
@@ -18,6 +19,21 @@ const Comment = (props) => {
   const toggleClick = (e) => {
     e.preventDefault()
     setClicked(!isClicked)
+  }
+
+  const makeEdits = (e) => {
+    e.preventDefault()
+    toggleEdit(!canEdit)
+    console.log('Working')
+  }
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setUpdateComment({
+      ...updateComment,
+      content: e.currentTarget.textContent,
+      isEdited: true
+    })
   }
 
   const deleteCommentHandler = async () => {
@@ -46,48 +62,53 @@ const Comment = (props) => {
 
   return (
     <div className="CommentContainer">
-      {/* <h4>Comment</h4> */}
-      {/* <h5>Author: {props.authorId} </h5> */}
-      {/* <h5>Street: {props.streetId}</h5> */}
-      <FontAwesomeIcon
-        icon={faXmark}
-        id="Close"
-        onClick={deleteCommentHandler}
-        pull="right"
-      />
-      <FontAwesomeIcon icon={faPenToSquare} id="Edit" pull="right" />
+      {props.user.id === props.authorId ? (
+        <FontAwesomeIcon
+          icon={faXmark}
+          id="Close"
+          onClick={deleteCommentHandler}
+          pull="right"
+        />
+      ) : null}
+      {props.user.id === props.authorId ? (
+        <FontAwesomeIcon
+          icon={faPenToSquare}
+          id="Edit"
+          onClick={makeEdits}
+          pull="right"
+        />
+      ) : null}
       <h4>@{props.userName}</h4>
-      <p>{props.content}</p>
-      <div>
-        <form
-          onSubmit={updateCommentHandleChange}
-          className="updateCommentForm"
-        >
-          <input
-            required
-            type="text"
-            value={updateComment.content}
-            placeholder="Edit Comment"
-            onChange={(e) =>
-              setUpdateComment({
-                ...updateComment,
-                content: e.target.value,
-                isEdited: true
-              })
-            }
-          ></input>
-          <button className="submitButton" text="Submit">
-            Edit Comment
-          </button>
-        </form>
+      <div
+        className="EditField"
+        contentEditable={
+          !canEdit && props.user.id === props.authorId ? true : null
+        }
+        onInput={handleChange}
+      >
+        {props.content} <br />
       </div>
-      <FontAwesomeIcon
-        icon={faRegThumb}
-        id="RegLike"
-        pull="left"
-        onClick={toggleClick}
-        color={!isClicked ? green : black}
-      />
+      {props.user.id === props.authorId && !canEdit ? (
+        <button onClick={updateCommentHandleChange}>Comment</button>
+      ) : null}
+      {props.user.id !== props.authorId ? (
+        <FontAwesomeIcon
+          icon={faRegThumb}
+          id="RegLike"
+          pull="left"
+          onClick={toggleClick}
+          color={!isClicked ? green : black}
+        />
+      ) : null}
+      {canEdit ? (
+        <FontAwesomeIcon
+          icon={faRegThumb}
+          id="RegLike"
+          pull="left"
+          onClick={toggleClick}
+          color={!isClicked ? green : black}
+        />
+      ) : null}
     </div>
   )
 }
