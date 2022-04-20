@@ -18,6 +18,7 @@ const StreetPost = (props) => {
     content: '',
     isEdited: false
   })
+  const [likeCount, setLikeCount] = useState(0)
 
   useEffect(() => {
     const getComments = async () => {
@@ -30,15 +31,24 @@ const StreetPost = (props) => {
       const likeResults = await Client.get(
         `http://localhost:3001/street/${props.user.id}/like/${props.id}`
       )
-      console.log('likeResults', likeResults)
+      //console.log('likeResults', likeResults)
       if (likeResults.data > 0) {
         toggleHeart(true)
       } else {
         toggleHeart(false)
       }
     }
+    const getLikeCount = async () => {
+      const likeCountResults = await Client.get(
+        `http://localhost:3001/street/like/${props.id}`
+      )
+      //console.log(likeCountResults)
+      setLikeCount(likeCountResults.data.number)
+      setCommentCount(commentCount + 1)
+    }
     getComments()
     checkLikes()
+    getLikeCount()
   }, [commentCount])
 
   const deleteStreetHandler = async () => {
@@ -157,6 +167,7 @@ const StreetPost = (props) => {
             }}
           />
         )}
+        <span className="likeCount">{likeCount > 0 ? likeCount : null}</span>
         <FontAwesomeIcon
           icon={faComment}
           id="ConvoBubble"

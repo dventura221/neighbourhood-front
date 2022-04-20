@@ -113,7 +113,7 @@ const Comment = (props) => {
           id="RegLike"
           pull="left"
           onClick={toggleClick}
-          color={!isClicked ? green : black}
+          color={!isClicked ? black : green}
         />
       ) : null}
     </div>
