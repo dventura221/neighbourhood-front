@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Client from '../services/api'
 //import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../services/api'
 
 const StreetForm = (props) => {
   // let navigate = useNavigate()
@@ -11,7 +12,7 @@ const StreetForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const res = await Client.post(
-      `http://localhost:3001/street/${props.user.id}/new`,
+      `${BASE_URL}/street/${props.user.id}/new`,
       streetValues
     )
       .then((res) => console.log('successful'))

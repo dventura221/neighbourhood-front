@@ -1,6 +1,7 @@
 import { useState } from 'react'
 //import { useNavigate } from 'react-router-dom'
 import Client from '../services/api'
+import { BASE_URL } from '../services/api'
 
 const CommentForm = (props) => {
   // let navigate = useNavigate()
@@ -10,7 +11,7 @@ const CommentForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const res = await Client.post(
-      `http://localhost:3001/comment/${props.user.id}/${props.streetId}/new`,
+      `${BASE_URL}/comment/${props.user.id}/${props.streetId}/new`,
       commentValues
     )
       .then((res) => console.log('successful'))
