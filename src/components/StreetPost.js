@@ -122,27 +122,29 @@ const StreetPost = (props) => {
   return (
     <div className="PostFeed">
       <div className="PostContainer PostContent">
-        {props.user.id === props.authorId ? (
-          <FontAwesomeIcon
-            icon={faXmark}
-            id="Close"
-            onClick={deleteStreetHandler}
-            pull="right"
-          />
-        ) : null}
-        {props.user.id === props.authorId ? (
-          <FontAwesomeIcon
-            icon={faPenToSquare}
-            id="Edit"
-            onClick={makeEdits}
-            pull="right"
-          />
-        ) : null}
-        <span>
-          <img src={props.avatar} alt="avatar" className="streetAvatar" />
-        </span>
-        <span id="Name">{props.firstName}</span>
-        <span id="Handle">@{props.userName}</span>
+        <img src={props.avatar} alt="Avatar" className="Avatar" />
+        <div className="PostHandle">
+          <span id="Name">{props.firstName}</span>
+          <span id="Handle">@{props.userName}</span>
+        </div>
+        <div className="EditIcons">
+          {props.user.id === props.authorId ? (
+            <FontAwesomeIcon
+              icon={faPenToSquare}
+              id="Edit"
+              onClick={makeEdits}
+              pull="right"
+            />
+          ) : null}
+          {props.user.id === props.authorId ? (
+            <FontAwesomeIcon
+              icon={faXmark}
+              id="Close"
+              onClick={deleteStreetHandler}
+              pull="right"
+            />
+          ) : null}
+        </div>
         <div
           className="EditStreet"
           id="FeedContent"
@@ -153,62 +155,47 @@ const StreetPost = (props) => {
         >
           {props.content}
         </div>
-        {props.user.id === props.authorId && canEdit ? (
-          <button
-            onClick={(e) => {
-              updateStreetHandleChange(e)
-              toggleEdit(false)
-            }}
-          >
-            Comment
-          </button>
-        ) : null}
-      </div>
-      {/* <form onSubmit={updateStreetHandleChange} className="updateCommentForm">
-          <input
-            required
-            type="text"
-            value={updateStreet.content}
-            placeholder="Edit Street"
-            onChange={(e) =>
-              setUpdateStreet({
-                ...updateStreet,
-                content: e.target.value,
-                isEdited: true
-              })
-            }
-          ></input>
-        </form>
-        <button className="submitButton" text="Submit">
-          Edit Street
-        </button>
-      </div> */}
-      <div className="IconBar">
-        {!heartClicked ? (
+        <div className="UpdateButtonContainer">
+          {props.user.id === props.authorId && canEdit ? (
+            <button
+              className="UpdateButton"
+              onClick={(e) => {
+                updateStreetHandleChange(e)
+                // changeFocus()
+                toggleEdit(false)
+              }}
+            >
+              Post
+            </button>
+          ) : null}
+        </div>
+        <div className="IconBar">
+          <div className="LikeCount">{likeCount > 0 ? likeCount : null}</div>
+          {!heartClicked ? (
+            <FontAwesomeIcon
+              icon={faHeartRegular}
+              id="RegHeart"
+              onClick={(e) => {
+                changeStyle(e)
+                likeStreetHandler(e)
+              }}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faHeartSolid}
+              id="SolidHeart"
+              onClick={(e) => {
+                changeStyle(e)
+                unlikeStreetHandler(e)
+              }}
+            />
+          )}
           <FontAwesomeIcon
-            icon={faHeartRegular}
-            id="RegHeart"
-            onClick={(e) => {
-              changeStyle(e)
-              likeStreetHandler(e)
-            }}
+            icon={faComment}
+            id="ConvoBubble"
+            onClick={displayComments}
           />
-        ) : (
-          <FontAwesomeIcon
-            icon={faHeartSolid}
-            id="SolidHeart"
-            onClick={(e) => {
-              changeStyle(e)
-              unlikeStreetHandler(e)
-            }}
-          />
-        )}
-        <span className="likeCount">{likeCount > 0 ? likeCount : null}</span>
-        <FontAwesomeIcon
-          icon={faComment}
-          id="ConvoBubble"
-          onClick={displayComments}
-        />
+        </div>
       </div>
       {!convoClicked &&
         allComments.map((comment) => (

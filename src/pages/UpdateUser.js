@@ -26,7 +26,7 @@ const UpdateUser = (props) => {
   return (
     <div>
       <Link to="/streetfeed">The Feed</Link>
-      <h1>Update {props.user.userName}'s Avatar</h1>
+      <h1>Update @{props.user.userName}'s Avatar</h1>
       <span>
         <img src={props.user.avatar} alt="avatar" />
       </span>

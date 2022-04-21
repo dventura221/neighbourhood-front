@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
@@ -6,6 +6,7 @@ import { faThumbsUp as faRegThumb } from '@fortawesome/free-regular-svg-icons'
 import Client from '../services/api'
 
 const Comment = (props) => {
+  // const inputRef = useRef()
   const [isClicked, setClicked] = useState(false)
   const [canEdit, toggleEdit] = useState(false)
   const [saltCount, setSaltCount] = useState(10000)
@@ -103,30 +104,26 @@ const Comment = (props) => {
   }
 
   return (
-    <div className="CommentContainer">
-      {props.user.id === props.authorId ? (
-        <FontAwesomeIcon
-          icon={faXmark}
-          id="Close"
-          onClick={deleteCommentHandler}
-          pull="right"
-        />
-      ) : null}
-      {props.user.id === props.authorId ? (
-        <FontAwesomeIcon
-          icon={faPenToSquare}
-          id="Edit"
-          onClick={makeEdits}
-          pull="right"
-        />
-      ) : null}
-      <span>
-        <img
-          src={props.avatar}
-          alt="comment avatar"
-          className="commentAvatar"
-        />
-      </span>
+    <div className="CommentContainer CommentContent">
+      <div className="EditIcons">
+        {props.user.id === props.authorId ? (
+          <FontAwesomeIcon
+            icon={faPenToSquare}
+            id="Edit"
+            onClick={makeEdits}
+            pull="right"
+          />
+        ) : null}
+        {props.user.id === props.authorId ? (
+          <FontAwesomeIcon
+            icon={faXmark}
+            id="Close"
+            onClick={deleteCommentHandler}
+            pull="right"
+          />
+        ) : null}
+      </div>
+      <img src={props.avatar} alt="comment avatar" className="Avatar" />
       <h4>@{props.userName}</h4>
       <div
         className="EditComment"
@@ -139,40 +136,43 @@ const Comment = (props) => {
       </div>
       {props.user.id === props.authorId && canEdit ? (
         <button
+          className="UpdateButton"
           onClick={(e) => {
             updateCommentHandleChange(e)
             toggleEdit(false)
           }}
         >
-          Comment
+          Update
         </button>
       ) : null}
-      {!canEdit && isClicked ? (
-        <FontAwesomeIcon
-          icon={faRegThumb}
-          id="RegLike"
-          pull="left"
-          onClick={(e) => {
-            toggleClick(e)
-            unlikeCommentHandler(e)
-          }}
-          color={green}
-        />
-      ) : (
-        <FontAwesomeIcon
-          icon={faRegThumb}
-          id="RegLike"
-          pull="left"
-          onClick={(e) => {
-            toggleClick(e)
-            likeCommentHandler(e)
-          }}
-          color={black}
-        />
-      )}
-      <span className="commentLikeCount">
-        {commentLikeCount > 0 ? commentLikeCount : null}
-      </span>
+      <div className="IconBar">
+        <div className="LikeCount">
+          {commentLikeCount > 0 ? commentLikeCount : null}
+        </div>
+        {!canEdit && isClicked ? (
+          <FontAwesomeIcon
+            icon={faRegThumb}
+            id="RegLike"
+            pull="left"
+            onClick={(e) => {
+              toggleClick(e)
+              unlikeCommentHandler(e)
+            }}
+            color={green}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faRegThumb}
+            id="RegLike"
+            pull="left"
+            onClick={(e) => {
+              toggleClick(e)
+              likeCommentHandler(e)
+            }}
+            color={black}
+          />
+        )}
+      </div>
     </div>
   )
 }

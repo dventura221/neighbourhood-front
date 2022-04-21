@@ -123,6 +123,7 @@
   margin-left: 5%;
   margin-right: 5%;
   border-bottom: 1px solid rgb(128, 128, 128, 0.5);
+  clear: both;
 }
 
 .StreetPost p {
@@ -137,15 +138,21 @@
 }
 
 #Name {
+  top: 20px;
+  left: 108.5px;
   font-size: 18px;
   font-weight: bold;
   padding-right: 5px;
+  display: inline-block;
+  grid-area: b;
 }
 
 #Handle {
+  top: 20px;
   color: #9ACD32;
   font-size: 18px;
   font-weight: bold;
+  grid-area: b;
 }
 
 .StreetPost textarea {
@@ -177,12 +184,59 @@
   border-radius: 10px;
 }
 
+.Avatar {
+  border-radius: 50px;
+  height: 85px;
+  width: 85px;
+  grid-area: a;
+  border: 1px solid rgb(128, 128, 128, 0.2);
+  place-self: center;
+  align-self: start;
+}
+
+.EditStreet {
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  border-radius: 10px;
+  overflow: scroll;
+  grid-area: d;
+  align-items: start;
+}
+
+.PostHandle {
+  place-self: center start;
+}
+
 .PostContent {
-  padding-left: 10px;
+  display: grid;
+  grid-template-columns: 100px 1fr 75px;
+  grid-template-rows: 25px 1fr 25px;
+  grid-template-areas: 
+  "a b c"
+  "a d d"
+  "a e f";
+
+  height: auto;
   font-family: Helvetica;
   font-size: 18px;
   color: black;
   text-align: left;
+}
+
+.UpdateButtonContainer {
+  grid-area: f;
+  place-self: center end;
+}
+
+.UpdateButton {
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #20B2AA;
+  margin-top: 5px;
+  margin-right: 1.5px;
 }
 
 .PostContent p {
@@ -190,64 +244,110 @@
   margin-bottom: 0;
 }
 
-.EditStreet {
-  width: 85%;
-  padding: 5px 0;
-  margin-top: 2.5px;
-  margin-bottom: 2.5px;
+.IconBar {
+  display: flex;
+  grid-area: e;
+  place-self: center start;
+  margin-top: 5px;
 }
 
-.IconBar {
-  text-align: left;
-  width: 20%;
+.EditIcons {
+  display: flex;
+  justify-content: flex-end;
+  grid-area: c;
+}
+
+.PostContainer {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 1.5%;
+  margin-top: 1.5%;
+  font-family: Arial;
+  font-size: 16px;
+  border: 1px solid rgb(128, 128, 128, 0.2);
+  border-radius: 10px;
 }
 
 .CommentContainer {
-  width: 75%;
-  float: right;
-  text-align: left;
-  border: 1px solid rgb(128, 128, 128, 0.2);
-  border-radius: 10px;
-  margin-top: -3.5%;
-  margin-bottom: 5%;
-  padding: 7.5px;
+  width: 85%;
+  height: auto;
+  margin-bottom: 1.5%;
+  transition-property: all;
   transition-duration: 500ms;
 }
 
 .CommentContainer h4 {
   margin: 0;
-  padding-left: 5px;
+  grid-area: b;
 }
 
-.EditComment {
-  margin: 0;
-  padding-left: 5px;
-  padding-top: 3.5px;
-  padding-bottom: 5px;
-}
+.CommentContent {
+  display: grid;
+  grid-template-columns: 100px 1fr 75px;
+  grid-template-rows: 25px 1fr 25px;
+  grid-template-areas: 
+  "a b c"
+  "a d d"
+  "a e f";
 
-.CommentForm {
-  clear: both;
-  position: relative;
-  margin-bottom: 9.5%;
-}
-
-.CommentForm textarea {
-  width: 75%;
+  height: auto;
+  width: 85%;
   float: right;
   text-align: left;
-  margin-top: -3.5%;
-  margin-bottom: 1.5%;
   border: 1px solid rgb(128, 128, 128, 0.2);
   border-radius: 10px;
   padding: 7.5px;
+  transition-property: all;
+  transition-duration: 500ms;
+}
+
+.LikeContainer {
+  grid-area: e;
+}
+
+.EditComment {
+  width: 95%;
+  grid-area: d;
+  align-items: start;
+  border-radius: 10px;
+}
+
+.CommentFormContainer {
+  margin-bottom: 15%;
+  position: relative;
+  clear: both;
+}
+
+.CommentForm {
+  width: 85%;
+  float: right;
+}
+
+.CommentForm textarea {
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  border: 1px solid rgb(128, 128, 128, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  padding-right: 100px;
+
   resize: none;
   font-family: Arial;
   font-size: 16px;
   }
 
-  .EditField {
-    padding-left: 5px;
+  .CommentButton {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #20B2AA;
   }
 
 #FeedContent {
@@ -276,9 +376,8 @@
 }
 
 #RegHeart {
-  margin-top: 2%;
-  margin-left: 10%;
   font-size: 20px;
+  padding-left: 5px;
 }
 
 #RegHeart:hover {
@@ -287,19 +386,22 @@
 
 #SolidHeart {
   color: #FF6347;
-  margin-top: 2%;
-  margin-left: 10%;
   font-size: 20px;
+  padding-left: 5px;
 }
 
 #SolidHeart:hover {
   cursor: pointer;
 }
 
+.LikeCount {
+  font-weight: bold;
+  place-self: center;
+}
+
 #ConvoBubble {
-  margin-top: 2%;
-  margin-left: 7.5%;
   font-size: 20px;
+  padding-left: 7.5px;
 }
 
 #ConvoBubble:hover {
@@ -307,26 +409,14 @@
 }
 
 #RegLike {
-  margin-left: 2%;
-  margin-bottom: 1%;
   font-size: 21px;
+  place-self: center start;
+  padding-left: 5px;
+  margin-bottom: 5px;
 }
 
 #RegLike:hover {
   cursor: pointer;
-}
-
-#CommentButton {
-  position: absolute;
-  right: 0;
-  margin-right: 2.25%;
-  margin-top: -1%;
-  border-radius: 5px;
-  border: none;
-  padding: 5px 10px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #20B2AA;
 }
 
 #CommentButton:hover {
@@ -336,11 +426,16 @@
 #Close {
   font-size: 20px;
   margin-right: 5px;
-  padding-top: 5px;
+}
+
+#Close:hover {
+  cursor: pointer;
 }
 
 #Edit {
   font-size: 20px;
-  margin-right: 3.5px;
-  padding-top: 5px;
+}
+
+#Edit:hover {
+  cursor: pointer;
 }
