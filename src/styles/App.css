@@ -350,6 +350,10 @@
     color: #20B2AA;
   }
 
+.commentCount {
+  color: red;
+}
+
 #FeedContent {
   padding-top: .75%;
 }
