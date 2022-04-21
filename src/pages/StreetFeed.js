@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
 import NewsCard from '../components/NewsCard'
+import WeatherCard from '../components/WeatherCard'
 import axios from 'axios'
 
 const StreetFeed = (props) => {
@@ -23,7 +24,7 @@ const StreetFeed = (props) => {
       let response = await axios.get(
         `https://newsapi.org/v2/top-headlines?country=us&apiKey=${gAPI}`
       )
-      console.log(response.data.articles)
+      //console.log(response.data.articles)
       setNewsArticles(response.data.articles)
     }
     getStreetsAndNews()
@@ -35,7 +36,7 @@ const StreetFeed = (props) => {
         <NavBar user={props.user} handleLogOut={props.handleLogOut} />
       </div>
       <div className="LeftBar">
-        <p>Weather API Goes Here</p>
+        <WeatherCard />
       </div>
       <div className="MainFeed">
         <StreetForm

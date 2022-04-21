@@ -3,8 +3,6 @@ import Client from '../services/api'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../services/api'
-import { wAPI } from '../globals'
-import axios from 'axios'
 
 const UpdateUser = (props) => {
   let navigate = useNavigate()
@@ -15,18 +13,6 @@ const UpdateUser = (props) => {
     password: '',
     confirmPassword: ''
   })
-  // const [weather, setWeather] = useState({})
-
-  // useEffect(() => {
-  //   let getWeather = async () => {
-  //     const weatherResults = await axios.get(
-  //       `https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=fac7346a6da9f86ef5256b89a81db9d6`
-  //     )
-  //     console.log(weatherResults.data)
-  //     setWeather(weatherResults.data)
-  //   }
-  //   getWeather()
-  // }, [])
 
   const updateUserHandleChange = async (e) => {
     e.preventDefault()
