@@ -24,8 +24,8 @@ const CommentForm = (props) => {
   }
 
   return (
-    <div className="CommentForm">
-      <form onSubmit={handleSubmit}>
+    <div className="CommentFormContainer">
+      <div className="CommentForm">
         <textarea
           required
           type="text"
@@ -34,8 +34,12 @@ const CommentForm = (props) => {
           placeholder="Add a comment!"
           onChange={handleChange}
         ></textarea>
-        <button id="CommentButton">Post</button>
-      </form>
+        <div className="CommentButtonContainer">
+          <button className="CommentButton" onClick={handleSubmit}>
+            Comment
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

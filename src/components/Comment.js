@@ -60,30 +60,26 @@ const Comment = (props) => {
   }
 
   return (
-    <div className="CommentContainer">
-      {props.user.id === props.authorId ? (
-        <FontAwesomeIcon
-          icon={faXmark}
-          id="Close"
-          onClick={deleteCommentHandler}
-          pull="right"
-        />
-      ) : null}
-      {props.user.id === props.authorId ? (
-        <FontAwesomeIcon
-          icon={faPenToSquare}
-          id="Edit"
-          onClick={makeEdits}
-          pull="right"
-        />
-      ) : null}
-      <span>
-        <img
-          src={props.avatar}
-          alt="comment avatar"
-          className="commentAvatar"
-        />
-      </span>
+    <div className="CommentContainer CommentContent">
+      <div className="EditIcons">
+        {props.user.id === props.authorId ? (
+          <FontAwesomeIcon
+            icon={faPenToSquare}
+            id="Edit"
+            onClick={makeEdits}
+            pull="right"
+          />
+        ) : null}
+        {props.user.id === props.authorId ? (
+          <FontAwesomeIcon
+            icon={faXmark}
+            id="Close"
+            onClick={deleteCommentHandler}
+            pull="right"
+          />
+        ) : null}
+      </div>
+      <img src={props.avatar} alt="comment avatar" className="Avatar" />
       <h4>@{props.userName}</h4>
       <div
         className="EditComment"
@@ -94,16 +90,19 @@ const Comment = (props) => {
       >
         {props.content} <br />
       </div>
-      {props.user.id === props.authorId && canEdit ? (
-        <button
-          onClick={(e) => {
-            updateCommentHandleChange(e)
-            toggleEdit(false)
-          }}
-        >
-          Comment
-        </button>
-      ) : null}
+      <div className="UpdateButtonContainer">
+        {props.user.id === props.authorId && canEdit ? (
+          <button
+            className="UpdateButton"
+            onClick={(e) => {
+              updateCommentHandleChange(e)
+              toggleEdit(false)
+            }}
+          >
+            Update
+          </button>
+        ) : null}
+      </div>
       {/* {props.user.id !== props.authorId ? (
         <FontAwesomeIcon
           icon={faRegThumb}
@@ -113,15 +112,17 @@ const Comment = (props) => {
           color={!isClicked ? green : black}
         />
       ) : null} */}
-      {!canEdit ? (
-        <FontAwesomeIcon
-          icon={faRegThumb}
-          id="RegLike"
-          pull="left"
-          onClick={toggleClick}
-          color={!isClicked ? black : green}
-        />
-      ) : null}
+      <div className="LikeContainer">
+        {!canEdit ? (
+          <FontAwesomeIcon
+            icon={faRegThumb}
+            id="RegLike"
+            pull="left"
+            onClick={toggleClick}
+            color={!isClicked ? black : green}
+          />
+        ) : null}
+      </div>
     </div>
   )
 }
