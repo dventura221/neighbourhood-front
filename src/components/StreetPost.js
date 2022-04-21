@@ -14,8 +14,9 @@ const StreetPost = (props) => {
   const [commentCount, setCommentCount] = useState(10000)
   const [heartClicked, toggleHeart] = useState(false)
   const [likeCount, setLikeCount] = useState(0)
-  const [convoClicked, toggleConvo] = useState(false)
+  const [convoClicked, toggleConvo] = useState(true)
   const [altCount, setAltCount] = useState(100)
+  const [howManyComments, setHowManyComments] = useState(0)
   const [updateStreet, setUpdateStreet] = useState({
     content: '',
     isEdited: false
@@ -70,9 +71,16 @@ const StreetPost = (props) => {
       )
       setLikeCount(likeCountResults.data.number)
     }
+    const getCommentCount = async () => {
+      const commentCountResults = await Client.get(
+        `http://localhost:3001/street/${props.id}/comments`
+      )
+      setHowManyComments(commentCountResults.data.number)
+    }
     getComments()
     checkLikes()
     getLikeCount()
+    getCommentCount()
   }, [commentCount, altCount])
 
   const deleteStreetHandler = async () => {
@@ -195,6 +203,9 @@ const StreetPost = (props) => {
             id="ConvoBubble"
             onClick={displayComments}
           />
+          <span className="commentCount">
+            {howManyComments > 0 ? howManyComments : null}
+          </span>
         </div>
       </div>
       {!convoClicked &&
