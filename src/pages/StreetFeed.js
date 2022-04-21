@@ -19,23 +19,13 @@ const StreetFeed = (props) => {
     }
     const getNews = async () => {
       let response = await axios.get(
-        `https://content.guardianapis.com/us/media?api-key=${gAPI}`
+        `https://content.guardianapis.com/us/film?api-key=${gAPI}`
       )
       console.log(response)
     }
     getStreets()
     getNews()
   }, [count, streetCount])
-
-  // useEffect(() => {
-  //   const getNews = async () => {
-  //     let response = await axios.get(
-  //       `https://content.guardianapis.com/us/media?key=${gAPI}`
-  //     )
-  //     console.log(response)
-  //   }
-  //   getNews()
-  // }, [])
 
   return props.user ? (
     <div className="StreetGrid">

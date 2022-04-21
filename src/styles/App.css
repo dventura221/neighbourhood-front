@@ -34,7 +34,7 @@
   padding: 25px 0;
 }
 
-.GridContainer {
+.GridContainer, .ProfileContainer {
   width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -46,7 +46,6 @@
   grid-template-columns: 300px 300px;
   grid-template-rows: 450px;
   grid-gap: 5px;
-  justify-content: center;
   border-radius: 10px;
 }
 
@@ -106,8 +105,12 @@
   text-decoration: none;
   color: black;
   float: right;
-  margin-right: 1.5%;
-  padding-right: 10px;
+  padding-right: 20px;
+  padding-top: 3.5px;
+}
+
+.NavBar a:hover {
+  cursor: pointer;
 }
 
 .StreetPost {
@@ -199,7 +202,6 @@
   height: auto;
   font-size: 18px;
   border-radius: 10px;
-  overflow: scroll;
   grid-area: d;
   align-items: start;
 }
@@ -356,15 +358,100 @@
   margin-left: 15px;
 }
 
+#ProfileTitle {
+margin: 0;
+padding-top: 10px;
+}
+
+.ProfileNav {
+  background: linear-gradient(90deg, #bfcbe0 0%, #cfe9d2 100%);
+  margin-top: 0;
+  margin-bottom: 5%;
+  height: 65px;
+}
+
+.ProfileNav a {
+  position: absolute;
+  top: 22.5px;
+  right: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: large;
+  color: black;
+}
+
+.ProfileNav a:hover {
+cursor: pointer;
+}
+
+.ProfileContainer {
+  border: 1px solid rgb(128, 128, 128, 0.2);
+  border-radius: 15px;
+  margin-top: 65px;
+}
+
 .ProfileGrid {
 display: grid;
 grid-template-columns: 1fr 1fr;
-grid-template-rows: 25px 1fr 25px;
+grid-template-rows: 1fr 1fr;
 grid-template-areas: 
 "a b"
-"a d";
+"c b";
+
+padding: 10px;
+margin-bottom: 20px;
 }
 
+#UserAvatar {
+  border-radius: 50px;
+  height: 85px;
+  width: 85px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  grid-area: a;
+  place-self: center;
+}
+
+.UpdateAvatarForm {
+  place-self: center;
+}
+
+#ProfileHandle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #9ACD32;
+  margin-bottom: 10px;
+}
+
+.UpdatePasswordForm {
+  grid-area: b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.UpdatePasswordForm input, .UpdateAvatarForm input {
+display: block;
+margin-bottom: 5px;
+padding: 10px;
+border-radius: 15px;
+border: 1px solid gray;
+}
+
+.SubmitButton {
+  height: 30px;
+  width: 50%;
+  border-radius: 15px;
+  padding: 5px;
+  border: 1px solid gray;
+  background: linear-gradient(90deg, #cfe9d2 0%, #bfcbe0 100%);
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.SubmitButton:hover {
+  cursor: pointer;
+}
 
 #FeedContent {
   padding-top: .75%;
