@@ -350,9 +350,21 @@
     color: #20B2AA;
   }
 
-.commentCount {
-  color: red;
+.CommentCount {
+  font-weight: bold;
+  place-self: center;
+  margin-left: 15px;
 }
+
+.ProfileGrid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 25px 1fr 25px;
+grid-template-areas: 
+"a b"
+"a d";
+}
+
 
 #FeedContent {
   padding-top: .75%;
@@ -405,7 +417,8 @@
 
 #ConvoBubble {
   font-size: 20px;
-  padding-left: 7.5px;
+  padding-left: 6.5px;
+  color: #1CAC78;
 }
 
 #ConvoBubble:hover {

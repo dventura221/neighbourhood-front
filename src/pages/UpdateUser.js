@@ -45,68 +45,66 @@ const UpdateUser = (props) => {
   return (
     <div>
       <Link to="/streetfeed">The Feed</Link>
-      <h1>Update @{props.user.userName}'s Avatar</h1>
-      <span>
+      <h1>Update {props.user.firstName}'s Avatar</h1>
+      <div className="ProfileGrid">
         <img src={props.user.avatar} alt="avatar" className="Avatar" />
-      </span>
-      <span id="Name">{props.user.firstName}</span>
-      <span id="Handle">@{props.user.userName}</span>
-      <div>
-        <form onSubmit={updateUserHandleChange} className="updateAvatarForm">
-          <input
-            required
-            type="text"
-            value={updateAvatar.avatar}
-            placeholder="Change Avatar"
-            onChange={(e) =>
-              setUpdateAvatar({
-                ...updateAvatar,
-                avatar: e.target.value
-              })
-            }
-          ></input>
-          <button className="submitButton" text="Submit">
-            Submit
-          </button>
-        </form>
-        <form
-          onSubmit={updatePasswordHandleChange}
-          className="updatePasswordForm"
-        >
-          <input
-            required
-            type="text"
-            value={updatePassword.password}
-            placeholder="Change Password"
-            onChange={(e) =>
-              setUpdatePassword({
-                ...updatePassword,
-                password: e.target.value
-              })
-            }
-          ></input>
-          <input
-            required
-            type="text"
-            value={updatePassword.confirmPassword}
-            placeholder="Confirm Password"
-            onChange={(e) =>
-              setUpdatePassword({
-                ...updatePassword,
-                confirmPassword: e.target.value
-              })
-            }
-          ></input>
-          <button
-            className="submitButton"
-            text="Submit"
-            disabled={
-              updatePassword.password !== updatePassword.confirmPassword
-            }
-          >
-            Submit New Password
-          </button>
-        </form>
+        <span id="Handle">@{props.user.userName}</span>
+        <div className="UpdateAvatarForm">
+          <form onSubmit={updateUserHandleChange}>
+            <input
+              required
+              type="text"
+              value={updateAvatar.avatar}
+              placeholder="Change Avatar"
+              onChange={(e) =>
+                setUpdateAvatar({
+                  ...updateAvatar,
+                  avatar: e.target.value
+                })
+              }
+            ></input>
+            <button className="submitButton" text="Submit">
+              Submit
+            </button>
+          </form>
+        </div>
+        <div className="UpdatePasswordForm">
+          <form onSubmit={updatePasswordHandleChange}>
+            <input
+              required
+              type="text"
+              value={updatePassword.password}
+              placeholder="Change Password"
+              onChange={(e) =>
+                setUpdatePassword({
+                  ...updatePassword,
+                  password: e.target.value
+                })
+              }
+            ></input>
+            <input
+              required
+              type="text"
+              value={updatePassword.confirmPassword}
+              placeholder="Confirm Password"
+              onChange={(e) =>
+                setUpdatePassword({
+                  ...updatePassword,
+                  confirmPassword: e.target.value
+                })
+              }
+            ></input>
+            <button
+              className="submitButton"
+              text="Submit"
+              disabled={
+                updatePassword.password !== updatePassword.confirmPassword
+              }
+            >
+              Submit New Password
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   )
