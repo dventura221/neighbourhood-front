@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Client from '../services/api'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../services/api'
 
 const UpdateUser = (props) => {
   let navigate = useNavigate()
@@ -16,7 +17,7 @@ const UpdateUser = (props) => {
   const updateUserHandleChange = async (e) => {
     e.preventDefault()
     const res = await Client.put(
-      `http://localhost:3001/user/${props.user.id}/avatar`,
+      `${BASE_URL}/user/${props.user.id}/avatar`,
       updateAvatar
     )
       .then((res) => console.log('update user successful'))
@@ -29,10 +30,9 @@ const UpdateUser = (props) => {
 
   const updatePasswordHandleChange = async (e) => {
     e.preventDefault()
-    const res = await Client.put(
-      `http://localhost:3001/user/${props.user.id}/password`,
-      { password: updatePassword.password }
-    )
+    const res = await Client.put(`${BASE_URL}/user/${props.user.id}/password`, {
+      password: updatePassword.password
+    })
       .then((res) => console.log('update password successful'))
       .catch((err) => console.log(err.data))
     setUpdateAvatar({

@@ -4,6 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { faThumbsUp as faRegThumb } from '@fortawesome/free-regular-svg-icons'
 import Client from '../services/api'
+import { BASE_URL } from '../services/api'
 
 const Comment = (props) => {
   // const inputRef = useRef()
@@ -22,7 +23,7 @@ const Comment = (props) => {
   useEffect(() => {
     const checkCommentLikes = async () => {
       const likeResults = await Client.get(
-        `http://localhost:3001/comment/${props.user.id}/like/${props.commentid}`
+        `${BASE_URL}/comment/${props.user.id}/like/${props.commentid}`
       )
       if (likeResults.data === 'already liked') {
         setClicked(true)
@@ -32,7 +33,7 @@ const Comment = (props) => {
     }
     const getCommentLikeCount = async () => {
       const commentLikeCountResults = await Client.get(
-        `http://localhost:3001/comment/like/${props.commentid}`
+        `${BASE_URL}/comment/like/${props.commentid}`
       )
       setCommentLikeCount(commentLikeCountResults.data.number)
     }
@@ -61,7 +62,7 @@ const Comment = (props) => {
 
   const deleteCommentHandler = async () => {
     const res = await Client.delete(
-      `http://localhost:3001/comment/${props.user.id}/delete/${props.commentid}`
+      `${BASE_URL}/comment/${props.user.id}/delete/${props.commentid}`
     )
       .then((res) => console.log('delete comment successful'))
       .catch((err) => console.log(err.data))
@@ -71,7 +72,7 @@ const Comment = (props) => {
   const updateCommentHandleChange = async (e) => {
     e.preventDefault()
     const res = await Client.put(
-      `http://localhost:3001/comment/${props.user.id}/update/${props.commentid}`,
+      `${BASE_URL}/comment/${props.user.id}/update/${props.commentid}`,
       updateComment
     )
       .then((res) => console.log('update comment successful'))
@@ -86,7 +87,7 @@ const Comment = (props) => {
   const likeCommentHandler = async (e) => {
     e.preventDefault()
     const res = await Client.post(
-      `http://localhost:3001/comment/${props.user.id}/like/${props.commentid}`
+      `${BASE_URL}/comment/${props.user.id}/like/${props.commentid}`
     )
       .then((res) => console.log('like comment successful'))
       .catch((err) => console.log(err.data))
@@ -96,7 +97,7 @@ const Comment = (props) => {
   const unlikeCommentHandler = async (e) => {
     e.preventDefault()
     const res = await Client.delete(
-      `http://localhost:3001/comment/${props.user.id}/like/${props.commentid}`
+      `${BASE_URL}/comment/${props.user.id}/like/${props.commentid}`
     )
       .then((res) => console.log('unlike street successful'))
       .catch((err) => console.log(err.data))

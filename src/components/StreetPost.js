@@ -8,6 +8,7 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import CommentForm from './CommentForm'
 import Comment from './Comment'
 import Client from '../services/api'
+import { BASE_URL } from '../services/api'
 
 const StreetPost = (props) => {
   const [allComments, setAllComments] = useState([])
@@ -50,14 +51,12 @@ const StreetPost = (props) => {
 
   useEffect(() => {
     const getComments = async () => {
-      const results = await Client.get(
-        `http://localhost:3001/comment/${props.id}`
-      )
+      const results = await Client.get(`${BASE_URL}/comment/${props.id}`)
       setAllComments(results.data)
     }
     const checkLikes = async () => {
       const likeResults = await Client.get(
-        `http://localhost:3001/street/${props.user.id}/like/${props.id}`
+        `${BASE_URL}/street/${props.user.id}/like/${props.id}`
       )
       if (likeResults.data > 0) {
         toggleHeart(true)
@@ -67,13 +66,13 @@ const StreetPost = (props) => {
     }
     const getLikeCount = async () => {
       const likeCountResults = await Client.get(
-        `http://localhost:3001/street/like/${props.id}`
+        `${BASE_URL}/street/like/${props.id}`
       )
       setLikeCount(likeCountResults.data.number)
     }
     const getCommentCount = async () => {
       const commentCountResults = await Client.get(
-        `http://localhost:3001/street/${props.id}/comments`
+        `${BASE_URL}/street/${props.id}/comments`
       )
       setHowManyComments(commentCountResults.data.number)
     }
@@ -85,7 +84,7 @@ const StreetPost = (props) => {
 
   const deleteStreetHandler = async () => {
     const res = await Client.delete(
-      `http://localhost:3001/street/${props.user.id}/delete/${props.id}`
+      `${BASE_URL}/street/${props.user.id}/delete/${props.id}`
     )
       .then((res) => console.log('delete street successful'))
       .catch((err) => console.log(err.data))
@@ -95,7 +94,7 @@ const StreetPost = (props) => {
   const updateStreetHandleChange = async (e) => {
     e.preventDefault()
     const res = await Client.put(
-      `http://localhost:3001/street/${props.user.id}/update/${props.id}`,
+      `${BASE_URL}/street/${props.user.id}/update/${props.id}`,
       updateStreet
     )
       .then((res) => console.log('update street successful'))
@@ -110,7 +109,7 @@ const StreetPost = (props) => {
   const likeStreetHandler = async (e) => {
     e.preventDefault()
     const res = await Client.post(
-      `http://localhost:3001/street/${props.user.id}/like/${props.id}`
+      `${BASE_URL}/street/${props.user.id}/like/${props.id}`
     )
       .then((res) => console.log('like street successful'))
       .catch((err) => console.log(err.data))
@@ -120,7 +119,7 @@ const StreetPost = (props) => {
   const unlikeStreetHandler = async (e) => {
     e.preventDefault()
     const res = await Client.delete(
-      `http://localhost:3001/street/${props.user.id}/like/${props.id}`
+      `${BASE_URL}/street/${props.user.id}/like/${props.id}`
     )
       .then((res) => console.log('unlike street successful'))
       .catch((err) => console.log(err.data))
