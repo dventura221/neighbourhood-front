@@ -28,7 +28,7 @@ const UpdateUser = (props) => {
       <Link to="/streetfeed">The Feed</Link>
       <h1>Update @{props.user.userName}'s Avatar</h1>
       <span>
-        <img src={props.user.avatar} alt="avatar" />
+        <img src={props.user.avatar} alt="avatar" className="Avatar" />
       </span>
       <span id="Name">{props.user.firstName}</span>
       <span id="Handle">@{props.user.userName}</span>
