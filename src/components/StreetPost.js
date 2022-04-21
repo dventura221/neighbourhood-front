@@ -197,14 +197,14 @@ const StreetPost = (props) => {
               }}
             />
           )}
+          <div className="CommentCount">
+            {howManyComments > 0 ? howManyComments : null}
+          </div>
           <FontAwesomeIcon
             icon={faComment}
             id="ConvoBubble"
             onClick={displayComments}
           />
-          <span className="commentCount">
-            {howManyComments > 0 ? howManyComments : null}
-          </span>
         </div>
       </div>
       {!convoClicked &&
