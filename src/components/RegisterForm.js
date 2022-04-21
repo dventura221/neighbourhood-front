@@ -88,7 +88,7 @@ const RegisterForm = (props) => {
         ></input>
         <input
           required
-          type="text"
+          type="password"
           name="password"
           value={regUser.password}
           placeholder="Password"

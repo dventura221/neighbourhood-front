@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Client from '../services/api'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
@@ -13,6 +13,10 @@ const UpdateUser = (props) => {
     password: '',
     confirmPassword: ''
   })
+
+  // useEffect(() => {
+  //   let getWeather
+  // })
 
   const updateUserHandleChange = async (e) => {
     e.preventDefault()
@@ -75,7 +79,7 @@ const UpdateUser = (props) => {
               <p id="ProfileHandle">@{props.user.userName}</p>
               <input
                 required
-                type="text"
+                type="password"
                 value={updatePassword.password}
                 placeholder="Change Password"
                 onChange={(e) =>
@@ -87,7 +91,7 @@ const UpdateUser = (props) => {
               ></input>
               <input
                 required
-                type="text"
+                type="password"
                 value={updatePassword.confirmPassword}
                 placeholder="Confirm Password"
                 onChange={(e) =>
