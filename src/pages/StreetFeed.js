@@ -1,30 +1,32 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { GetStreets } from '../services/PostServices'
+import { gAPI } from '../globals'
 import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
-import { gAPI } from '../globals'
-import { useNavigate } from 'react-router-dom'
+import NewsCard from '../components/NewsCard'
 import axios from 'axios'
 
 const StreetFeed = (props) => {
+  // const { uuid } = require('uuidv4')
   let navigate = useNavigate()
   const [count, setCount] = useState(10000)
   const [streetCount, setStreetCount] = useState(10000)
+  const [newsArticles, setNewsArticles] = useState([])
 
   useEffect(() => {
-    const getStreets = async () => {
+    const getStreetsAndNews = async () => {
       const results = await GetStreets()
       props.setAllStreets(results)
-    }
-    const getNews = async () => {
+
       let response = await axios.get(
-        `https://content.guardianapis.com/us/film?api-key=${gAPI}`
+        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${gAPI}`
       )
-      console.log(response)
+      console.log(response.data.articles)
+      setNewsArticles(response.data.articles)
     }
-    getStreets()
-    getNews()
+    getStreetsAndNews()
   }, [count, streetCount])
 
   return props.user ? (
@@ -61,7 +63,17 @@ const StreetFeed = (props) => {
         ))}
       </div>
       <div className="RightBar">
-        <p>News API Goes Here</p>
+        <div>
+          {newsArticles.map((article) => (
+            <NewsCard
+              key={article.title}
+              title={article.title}
+              description={article.description}
+              image={article.urlToImage}
+              url={article.url}
+            />
+          ))}
+        </div>
       </div>
     </div>
   ) : (
