@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
@@ -8,6 +8,8 @@ import Client from '../services/api'
 const Comment = (props) => {
   const [isClicked, setClicked] = useState(false)
   const [canEdit, toggleEdit] = useState(false)
+  const [saltCount, setSaltCount] = useState(10000)
+  const [commentLikeCount, setCommentLikeCount] = useState(0)
   const [updateComment, setUpdateComment] = useState({
     content: '',
     isEdited: false
@@ -15,6 +17,27 @@ const Comment = (props) => {
 
   const green = '#018749'
   const black = '#000000'
+
+  useEffect(() => {
+    const checkCommentLikes = async () => {
+      const likeResults = await Client.get(
+        `http://localhost:3001/comment/${props.user.id}/like/${props.commentid}`
+      )
+      if (likeResults.data === 'already liked') {
+        setClicked(true)
+      } else {
+        setClicked(false)
+      }
+    }
+    const getCommentLikeCount = async () => {
+      const commentLikeCountResults = await Client.get(
+        `http://localhost:3001/comment/like/${props.commentid}`
+      )
+      setCommentLikeCount(commentLikeCountResults.data.number)
+    }
+    checkCommentLikes()
+    getCommentLikeCount()
+  }, [saltCount])
 
   const toggleClick = (e) => {
     e.preventDefault()
@@ -59,6 +82,26 @@ const Comment = (props) => {
     props.setCommentCount(props.commentCount + 1)
   }
 
+  const likeCommentHandler = async (e) => {
+    e.preventDefault()
+    const res = await Client.post(
+      `http://localhost:3001/comment/${props.user.id}/like/${props.commentid}`
+    )
+      .then((res) => console.log('like comment successful'))
+      .catch((err) => console.log(err.data))
+    setSaltCount(saltCount + 1)
+  }
+
+  const unlikeCommentHandler = async (e) => {
+    e.preventDefault()
+    const res = await Client.delete(
+      `http://localhost:3001/comment/${props.user.id}/like/${props.commentid}`
+    )
+      .then((res) => console.log('unlike street successful'))
+      .catch((err) => console.log(err.data))
+    setSaltCount(saltCount + 1)
+  }
+
   return (
     <div className="CommentContainer CommentContent">
       <div className="EditIcons">
@@ -90,38 +133,44 @@ const Comment = (props) => {
       >
         {props.content} <br />
       </div>
-      <div className="UpdateButtonContainer">
-        {props.user.id === props.authorId && canEdit ? (
-          <button
-            className="UpdateButton"
-            onClick={(e) => {
-              updateCommentHandleChange(e)
-              toggleEdit(false)
-            }}
-          >
-            Update
-          </button>
-        ) : null}
-      </div>
-      {/* {props.user.id !== props.authorId ? (
-        <FontAwesomeIcon
-          icon={faRegThumb}
-          id="RegLike"
-          pull="left"
-          onClick={toggleClick}
-          color={!isClicked ? green : black}
-        />
-      ) : null} */}
+      {props.user.id === props.authorId && canEdit ? (
+        <button
+          className="UpdateButton"
+          onClick={(e) => {
+            updateCommentHandleChange(e)
+            toggleEdit(false)
+          }}
+        >
+          Update
+        </button>
+      ) : null}
       <div className="LikeContainer">
-        {!canEdit ? (
+        {!canEdit && isClicked ? (
           <FontAwesomeIcon
             icon={faRegThumb}
             id="RegLike"
             pull="left"
-            onClick={toggleClick}
-            color={!isClicked ? black : green}
+            onClick={(e) => {
+              toggleClick(e)
+              unlikeCommentHandler(e)
+            }}
+            color={green}
           />
-        ) : null}
+        ) : (
+          <FontAwesomeIcon
+            icon={faRegThumb}
+            id="RegLike"
+            pull="left"
+            onClick={(e) => {
+              toggleClick(e)
+              likeCommentHandler(e)
+            }}
+            color={black}
+          />
+        )}
+        <span className="commentLikeCount">
+          {commentLikeCount > 0 ? commentLikeCount : null}
+        </span>
       </div>
     </div>
   )
