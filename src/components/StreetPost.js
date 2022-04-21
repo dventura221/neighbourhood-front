@@ -25,6 +25,9 @@ const StreetPost = (props) => {
 
   const [canEdit, toggleEdit] = useState(false)
 
+  const green = '#018749'
+  const black = '#000000'
+
   const changeStyle = (e) => {
     e.preventDefault()
     toggleHeart(!heartClicked)
@@ -204,6 +207,7 @@ const StreetPost = (props) => {
             icon={faComment}
             id="ConvoBubble"
             onClick={displayComments}
+            color={howManyComments > 0 ? green : black}
           />
         </div>
       </div>
