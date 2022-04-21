@@ -1,8 +1,8 @@
 # **_NeighboUrhood_**
-
 Bring home the utility of social networks without the baggage.
 
-## Date 4/15/2022
+
+## Date 4/22/2022
 
 ### By: [Alissa Wiley](https://github.com/alissaestelle), [Dan Ventura](https://github.com/dventura221), and [Patrick Regan](https://github.com/pregan23)
 
@@ -10,11 +10,12 @@ Bring home the utility of social networks without the baggage.
 
 ---
 
-### **NeighboUrhood is a community oriented social network that we are testing in Pern Place. Users can make posts, known as Streets, and other users can comment on them. The heart of NeighboUrhood is free-form communication within your community, without the clutter that doesn't apply. Only those with a Pern Place zipcode will be able to sign up for the platform so the discourse will be driven by community members themselves, rather than larger trends.**
+### **NeighboUrhood is a community oriented social network that we are testing in Pern Place.  Users can make posts, known as Streets, and other users can comment on them.  The heart of NeighboUrhood is free-form communication within your community, with space set aside for the clutter of the world at large.  Only those with a Pern Place zipcode will be able to sign up for the platform so the discourse will be driven by community members themselves, rather than larger trends.**
 
 ### **_Screenshots_**
 
-### Coming soon!
+### Coming soon! 
+
 
 ### **_Technologies Used_**
 
@@ -34,6 +35,9 @@ Bring home the utility of social networks without the baggage.
 
 - JWT
 
+- FontAwesome
+
+
 ### **_Getting Started_**
 
 - Create your account and log in
@@ -49,6 +53,13 @@ Bring home the utility of social networks without the baggage.
 - [ ] Deployment in multiple neighborhoods
 - [ ] GPS features
 
+
 ### **_Credits_**
+
+[OpenWeatherApp](https://openweathermap.org/)
+[NewsApi](https://newsapi.org/)
+
+
+
 
 ### **Knowledge and Knowhow**: [General Assembly](https://generalassemb.ly/), [Github](https://github.com/), [W3 Schools](https://www.w3schools.com/), [MDN](https://developer.mozilla.org/en-US/)
