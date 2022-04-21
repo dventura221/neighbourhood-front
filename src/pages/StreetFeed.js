@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-//import { Link } from 'react-router-dom'
 import { GetStreets } from '../services/PostServices'
 import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
@@ -15,7 +14,6 @@ const StreetFeed = (props) => {
   useEffect(() => {
     const getStreets = async () => {
       const results = await GetStreets()
-      console.log(results)
       props.setAllStreets(results)
     }
     getStreets()
