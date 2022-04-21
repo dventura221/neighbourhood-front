@@ -44,7 +44,9 @@ export default function App() {
               />
             }
           />
-          <Route path="/profile" element={<UpdateUser user={user} />} />
+          {user && (
+            <Route path="/profile" element={<UpdateUser user={user} />} />
+          )}
         </Routes>
       </main>
     </div>
