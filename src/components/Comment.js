@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
@@ -6,6 +6,7 @@ import { faThumbsUp as faRegThumb } from '@fortawesome/free-regular-svg-icons'
 import Client from '../services/api'
 
 const Comment = (props) => {
+  // const inputRef = useRef()
   const [isClicked, setClicked] = useState(false)
   const [canEdit, toggleEdit] = useState(false)
   const [saltCount, setSaltCount] = useState(10000)
@@ -144,7 +145,10 @@ const Comment = (props) => {
           Update
         </button>
       ) : null}
-      <div className="LikeContainer">
+      <div className="IconBar">
+        <div className="LikeCount">
+          {commentLikeCount > 0 ? commentLikeCount : null}
+        </div>
         {!canEdit && isClicked ? (
           <FontAwesomeIcon
             icon={faRegThumb}
@@ -168,9 +172,6 @@ const Comment = (props) => {
             color={black}
           />
         )}
-        <span className="commentLikeCount">
-          {commentLikeCount > 0 ? commentLikeCount : null}
-        </span>
       </div>
     </div>
   )

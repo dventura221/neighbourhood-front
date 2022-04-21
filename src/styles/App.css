@@ -211,7 +211,7 @@
 .PostContent {
   display: grid;
   grid-template-columns: 100px 1fr 75px;
-  grid-template-rows: 25px 1fr 0.35fr;
+  grid-template-rows: 25px 1fr 25px;
   grid-template-areas: 
   "a b c"
   "a d d"
@@ -273,6 +273,8 @@
   width: 85%;
   height: auto;
   margin-bottom: 1.5%;
+  transition-property: all;
+  transition-duration: 500ms;
 }
 
 .CommentContainer h4 {
@@ -283,7 +285,7 @@
 .CommentContent {
   display: grid;
   grid-template-columns: 100px 1fr 75px;
-  grid-template-rows: 25px 1fr 0.35fr;
+  grid-template-rows: 25px 1fr 25px;
   grid-template-areas: 
   "a b c"
   "a d d"
@@ -296,6 +298,7 @@
   border: 1px solid rgb(128, 128, 128, 0.2);
   border-radius: 10px;
   padding: 7.5px;
+  transition-property: all;
   transition-duration: 500ms;
 }
 
@@ -307,6 +310,7 @@
   width: 95%;
   grid-area: d;
   align-items: start;
+  border-radius: 10px;
 }
 
 .CommentFormContainer {
@@ -407,7 +411,8 @@
 #RegLike {
   font-size: 21px;
   place-self: center start;
-  margin-top: 1.5%;
+  padding-left: 5px;
+  margin-bottom: 5px;
 }
 
 #RegLike:hover {
@@ -423,6 +428,14 @@
   margin-right: 5px;
 }
 
+#Close:hover {
+  cursor: pointer;
+}
+
 #Edit {
   font-size: 20px;
+}
+
+#Edit:hover {
+  cursor: pointer;
 }
