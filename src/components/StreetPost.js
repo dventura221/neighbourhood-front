@@ -212,9 +212,7 @@ const StreetPost = (props) => {
             color={howManyComments > 0 ? green : black}
           />
           {/* <span>_{new Date(props.created).toLocaleString()}</span> */}
-          <span className="Edited">
-            {props.edited == true ? 'Edited' : null}
-          </span>
+          <span id="PostEdited">{props.edited == true ? 'Edited' : null}</span>
         </div>
       </div>
       {!convoClicked &&

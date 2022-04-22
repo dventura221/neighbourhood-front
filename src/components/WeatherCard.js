@@ -28,7 +28,20 @@ const WeatherCard = () => {
     <div className="Weather">
       <h1>PERN</h1>
       <p id="Weather">Weather</p>
-      <img src="https://imgur.com/sMFwEWm.jpg" />
+      <img id="Banner" src="https://imgur.com/sMFwEWm.jpg" />
+      <div className="WeatherSearch">
+        <form onSubmit={handleSubmit}>
+          <input
+            required
+            type="number"
+            name="zip"
+            value={zipForm}
+            placeholder="Weather by Zipcode"
+            onChange={(e) => setZipForm(e.target.value)}
+          ></input>
+          <button>Submit</button>
+        </form>
+      </div>
       <h5>
         Location: {weather.name},&nbsp;
         {new Intl.DisplayNames(['en'], { type: 'region' }).of(
@@ -38,9 +51,9 @@ const WeatherCard = () => {
       </h5>
       <h4>Current Forecast:</h4>
       <h2 id="Forecast">{weather.weather[0].main}</h2>
-      {/* <h4>Detail: {weather.weather[0].description}</h4> */}
       <div className="OpenWeather">
         <img
+          id="APImg"
           src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
           alt="Icon"
         />
@@ -59,28 +72,15 @@ const WeatherCard = () => {
           <span>Wind Speed:</span> {weather.wind.speed} mph
         </p>
       </div>
-      <p>
+      <p className="SunContainer">
         <span className="Sun">Sunrise:</span> <br />
         {new Date(weather.sys.sunrise * 1000).toLocaleString()}
       </p>
-      <p>
+      <p className="SunContainer">
         <span className="Sun">Sunset: </span>
         <br />
         {new Date(weather.sys.sunset * 1000).toLocaleString()}
       </p>
-      <div className="WeatherSearch">
-        <form onSubmit={handleSubmit}>
-          <input
-            required
-            type="number"
-            name="zip"
-            value={zipForm}
-            placeholder="Weather by Zipcode"
-            onChange={(e) => setZipForm(e.target.value)}
-          ></input>
-          <button>Submit</button>
-        </form>
-      </div>
     </div>
   ) : null
 }
