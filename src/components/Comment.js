@@ -174,10 +174,10 @@ const Comment = (props) => {
           />
         )}
         <span className="commentCreated">
-          _{new Date(props.created).toLocaleString()}
+          &nbsp;{new Date(props.created).toLocaleString()}
         </span>
         <span className="commentEdited">
-          {props.edited == true ? '_Edited' : null}
+          &nbsp;{props.edited == true ? 'Edited' : null}
         </span>
       </div>
     </div>
