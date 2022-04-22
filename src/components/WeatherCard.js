@@ -24,7 +24,7 @@ const WeatherCard = () => {
     setZipForm('')
   }
 
-  return weather !== undefined ? 
+  return weather !== undefined ? (
     <div className="Weather">
       <div className="DataAlignment">
         <h1>PERN</h1>
@@ -52,24 +52,25 @@ const WeatherCard = () => {
           {new Date(weather.sys.sunrise * 1000).toLocaleString()}
         </p>
         <h5>
-        Location: {weather.name},&nbsp;
-        {new Intl.DisplayNames(['en'], { type: 'region' }).of(
-          weather.sys.country
-        )}
-        &nbsp;{zip}
-      </h5>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input
-            required
-            type="number"
-            name="zip"
-            value={zipForm}
-            placeholder="Weather by Zipcode"
-            onChange={(e) => setZipForm(e.target.value)}
-          ></input>
-         <button>Submit</button>
-        </form>
+          Location: {weather.name},&nbsp;
+          {new Intl.DisplayNames(['en'], { type: 'region' }).of(
+            weather.sys.country
+          )}
+          &nbsp;{zip}
+        </h5>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input
+              required
+              type="number"
+              name="zip"
+              value={zipForm}
+              placeholder="Weather by Zipcode"
+              onChange={(e) => setZipForm(e.target.value)}
+            ></input>
+            <button>Submit</button>
+          </form>
+        </div>
       </div>
     </div>
   ) : null
