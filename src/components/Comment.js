@@ -127,7 +127,7 @@ const Comment = (props) => {
       <img src={props.avatar} alt="comment avatar" className="Avatar" />
       <h4>@{props.userName}</h4>
       <div
-        className="EditComment"
+        className={!canEdit ? 'EditComment' : 'EditCommentAlt'}
         contentEditable={
           canEdit && props.user.id === props.authorId ? true : null
         }
