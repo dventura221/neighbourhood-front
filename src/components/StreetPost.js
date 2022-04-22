@@ -23,6 +23,7 @@ const StreetPost = (props) => {
     isEdited: false
   })
 
+  console.log(props.edited)
   const edited = 'Edited'
 
   const [canEdit, toggleEdit] = useState(false)
