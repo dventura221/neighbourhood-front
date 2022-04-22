@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GetStreets } from '../services/PostServices'
-import { gAPI, tAPI } from '../globals'
+import { nAPI, tAPI } from '../globals'
 import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
@@ -21,9 +21,10 @@ const StreetFeed = (props) => {
       props.setAllStreets(results)
       //console.log(results)
       let response = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${gAPI}`
+        `https://newsdata.io/api/1/news?apikey=${nAPI}&country=us&domain=theguardian`
       )
-      setNewsArticles(response.data.articles)
+      console.log(response.data)
+      setNewsArticles(response.data.results)
     }
     getStreetsAndNews()
   }, [count, streetCount])
@@ -67,15 +68,15 @@ const StreetFeed = (props) => {
       <div className="RightBar">
         <div>
           {newsArticles.map(
-            (article, idx) =>
-              idx < 15 && (
+            (article) =>
+              article.image_url !== null && (
                 <NewsCard
                   key={article.title}
                   title={article.title}
                   description={article.description}
-                  image={article.urlToImage}
-                  url={article.url}
-                  source={article.source.name}
+                  image={article.image_url}
+                  url={article.link}
+                  source={article.source_id}
                 />
               )
           )}

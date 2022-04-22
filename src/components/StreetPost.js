@@ -213,7 +213,7 @@ const StreetPost = (props) => {
           />
           <span id="PostEdited">
             &nbsp;
-            {props.edited == false
+            {edited == false
               ? new Date(props.created).toLocaleString()
               : new Date(props.updated).toLocaleString()}
           </span>
