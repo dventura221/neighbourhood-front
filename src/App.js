@@ -9,7 +9,7 @@ import UpdateUser from './pages/UpdateUser'
 
 export default function App() {
   const [user, setUser] = useState(null)
-
+  const [navCount, setNavCount] = useState(10000)
   const [allStreets, setAllStreets] = useState([])
   const handleLogOut = () => {
     setUser(null)
@@ -44,7 +44,18 @@ export default function App() {
               />
             }
           />
-          <Route path="/profile" element={<UpdateUser user={user} />} />
+          {user && (
+            <Route
+              path="/profile"
+              element={
+                <UpdateUser
+                  user={user}
+                  navCount={navCount}
+                  setNavCount={setNavCount}
+                />
+              }
+            />
+          )}
         </Routes>
       </main>
     </div>

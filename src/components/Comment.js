@@ -173,6 +173,12 @@ const Comment = (props) => {
             color={black}
           />
         )}
+        <span className="commentCreated">
+          _{new Date(props.created).toLocaleString()}
+        </span>
+        <span className="commentEdited">
+          {props.edited == true ? '_Edited' : null}
+        </span>
       </div>
     </div>
   )

@@ -1,9 +1,26 @@
 import { Link } from 'react-router-dom'
 
 const NavBar = (props) => {
+
+  // let authenticatedOptions
+  // if (props.user) {
+  //   authenticatedOptions = (
+  //       {/* <Link className="navLink">Your Streets</Link> */}
+  //       {/* <Link className="navLink">Your Comments</Link> */}
+  //   )
+  // }
+
+  // const publicOptions = {/* <Link to="/">Sign In</Link> */}
+
+  const changeNavCount = () => {
+    props.setNavCount(props.navCount + 1)
+  }
+
   return (
     <div>
-      <Link to="/streetfeed">The Feed</Link>
+      <Link to="/streetfeed" onClick={changeNavCount}>
+        The Feed
+      </Link>
       <Link to="/" onClick={props.handleLogOut}>
         Log Out
       </Link>

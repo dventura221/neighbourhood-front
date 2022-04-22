@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
 import NewsCard from '../components/NewsCard'
+import WeatherCard from '../components/WeatherCard'
 import axios from 'axios'
 
 const StreetFeed = (props) => {
@@ -17,32 +18,15 @@ const StreetFeed = (props) => {
   // const [weatherStats, setWeatherStats] = useState([])
 
   useEffect(() => {
-    const getAllCalls = async () => {
+    const getStreetsAndNews = async () => {
       const results = await GetStreets()
       props.setAllStreets(results)
-
       let response = await axios.get(
         `https://newsapi.org/v2/top-headlines?country=us&apiKey=${gAPI}`
       )
-      // console.log(response.data.articles)
       setNewsArticles(response.data.articles)
-
-      const fields = [
-        'temperature',
-        'windDirection',
-        'precipitationProbability',
-        'sunriseTime',
-        'sunsetTime',
-        'moonPhase',
-        'uvIndex'
-      ]
-
-      let weatherRes = await axios.get(
-        `https://api.tomorrow.io/v4/timelines?location=35.5950581%2C-82.5514869&fields=temperature&timesteps=1h&apikey=${tAPI}`
-      )
-      console.log(weatherRes)
     }
-    getAllCalls()
+    getStreetsAndNews()
   }, [count, streetCount])
 
   return props.user ? (
@@ -51,7 +35,7 @@ const StreetFeed = (props) => {
         <NavBar user={props.user} handleLogOut={props.handleLogOut} />
       </div>
       <div className="LeftBar">
-        <p>Weather API Goes Here</p>
+        <WeatherCard />
       </div>
       <div className="MainFeed">
         <StreetForm
@@ -75,6 +59,8 @@ const StreetFeed = (props) => {
             streetCount={streetCount}
             setStreetCount={setStreetCount}
             avatar={street.User.avatar}
+            created={street.createdAt}
+            edited={street.isEdited}
           />
         ))}
       </div>
