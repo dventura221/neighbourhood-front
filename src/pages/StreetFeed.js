@@ -19,6 +19,7 @@ const StreetFeed = (props) => {
     const getStreetsAndNews = async () => {
       const results = await GetStreets()
       props.setAllStreets(results)
+      //console.log(results)
       let response = await axios.get(
         `https://newsapi.org/v2/top-headlines?country=us&apiKey=${gAPI}`
       )
