@@ -31,6 +31,7 @@ const WeatherCard = () => {
         {new Intl.DisplayNames(['en'], { type: 'region' }).of(
           weather.sys.country
         )}
+        &nbsp;{zip}
       </h5>
       <h4>{weather.weather[0].main}</h4>
       <h4>Detail: {weather.weather[0].description}</h4>
