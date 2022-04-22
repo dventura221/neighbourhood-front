@@ -58,7 +58,7 @@ const StreetFeed = (props) => {
             streetCount={streetCount}
             setStreetCount={setStreetCount}
             avatar={street.User.avatar}
-            created={street.User.createdAt}
+            created={street.createdAt}
             edited={street.isEdited}
           />
         ))}
