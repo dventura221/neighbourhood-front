@@ -23,6 +23,8 @@ const StreetPost = (props) => {
     isEdited: false
   })
 
+  const edited = 'Edited'
+
   const [canEdit, toggleEdit] = useState(false)
 
   const green = '#018749'
@@ -209,6 +211,8 @@ const StreetPost = (props) => {
             onClick={displayComments}
             color={howManyComments > 0 ? green : black}
           />
+          <span>_{new Date(props.created).toLocaleString()}</span>
+          <span>{props.edited == true ? '_Edited' : null}</span>
         </div>
       </div>
       {!convoClicked &&
@@ -225,6 +229,8 @@ const StreetPost = (props) => {
             commentCount={commentCount}
             setCommentCount={setCommentCount}
             avatar={comment.User.avatar}
+            created={comment.createdAt}
+            edited={comment.isEdited}
           />
         ))}
       <CommentForm
