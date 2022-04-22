@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import Client from '../services/api'
-//import { useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../services/api'
 
 const StreetForm = (props) => {
-  // let navigate = useNavigate()
   const [streetValues, setStreetValues] = useState({
     content: ''
   })

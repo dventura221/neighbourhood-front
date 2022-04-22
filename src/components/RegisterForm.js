@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { RegisterUser } from '../services/Auth'
-//import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 const RegisterForm = (props) => {
@@ -12,7 +11,6 @@ const RegisterForm = (props) => {
     age: '',
     userName: '',
     password: ''
-    //avatar: ''
   })
 
   const handleSubmit = async (e) => {
@@ -24,7 +22,6 @@ const RegisterForm = (props) => {
       age: regUser.age,
       userName: regUser.userName,
       password: regUser.password
-      //avatar: regUser.avatar
     })
     setRegUser({
       firstName: '',
@@ -33,7 +30,6 @@ const RegisterForm = (props) => {
       age: '',
       userName: '',
       password: ''
-      //avatar: ''
     })
     props.setJustRegistered(true)
     navigate('/')
@@ -94,13 +90,6 @@ const RegisterForm = (props) => {
           placeholder="Password"
           onChange={handleChange}
         ></input>
-        {/* <input
-          type="text"
-          name="avatar"
-          value={regUser.avatar}
-          placeholder="Avatar"
-          onChange={handleChange}
-        ></input> */}
         <button className="submitButton" text="Submit">
           Register
         </button>

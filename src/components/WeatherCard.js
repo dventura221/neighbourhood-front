@@ -13,7 +13,6 @@ const WeatherCard = () => {
         `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${wAPI}&units=imperial`
       )
       setWeather(weatherResults.data)
-      console.log(weatherResults.data)
     }
     getWeather()
   }, [zip])
@@ -39,7 +38,6 @@ const WeatherCard = () => {
         </h5>
         <h4>Current Forecast:</h4>
         <h2 id="Forecast">{weather.weather[0].main}</h2>
-        {/* <h4>Detail: {weather.weather[0].description}</h4> */}
         <div className="OpenWeather">
           <img
             src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}

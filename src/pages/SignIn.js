@@ -1,5 +1,4 @@
 import { useState } from 'react'
-// import axios from 'axios'
 import RegisterForm from '../components/RegisterForm'
 import { useNavigate } from 'react-router-dom'
 import { SignInUser } from '../services/Auth'

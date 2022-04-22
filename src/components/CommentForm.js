@@ -1,11 +1,8 @@
 import { useState } from 'react'
-//import { useNavigate } from 'react-router-dom'
 import Client from '../services/api'
 import { BASE_URL } from '../services/api'
 
 const CommentForm = (props) => {
-  // let navigate = useNavigate()
-
   const [commentValues, setCommentValues] = useState({ content: '' })
 
   const handleSubmit = async (e) => {
@@ -36,7 +33,11 @@ const CommentForm = (props) => {
           onChange={handleChange}
         ></textarea>
         <div className="CommentButtonContainer">
-          <button className="CommentButton" onClick={handleSubmit}>
+          <button
+            className="CommentButton"
+            onClick={handleSubmit}
+            disabled={commentValues.content === ''}
+          >
             Comment
           </button>
         </div>

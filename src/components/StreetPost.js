@@ -173,7 +173,6 @@ const StreetPost = (props) => {
               className="UpdatePostButton"
               onClick={(e) => {
                 updateStreetHandleChange(e)
-                // changeFocus()
                 toggleEdit(false)
               }}
             >
@@ -211,9 +210,11 @@ const StreetPost = (props) => {
             onClick={displayComments}
             color={howManyComments > 0 ? green : black}
           />
-          {/* <span>_{new Date(props.created).toLocaleString()}</span> */}
-          <span className="Edited">
-            {props.edited == true ? 'Edited' : null}
+          <span>
+            &nbsp;
+            {props.edited == false
+              ? new Date(props.created).toLocaleString()
+              : new Date(props.updated).toLocaleString()}
           </span>
         </div>
       </div>
@@ -233,6 +234,7 @@ const StreetPost = (props) => {
             avatar={comment.User.avatar}
             created={comment.createdAt}
             edited={comment.isEdited}
+            updated={comment.updatedAt}
           />
         ))}
       <CommentForm
