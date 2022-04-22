@@ -70,6 +70,7 @@ const WeatherCard = () => {
           {new Date(weather.sys.sunset * 1000).toLocaleString()}
         </p>
         <div className="WeatherSearch">
+        <div>
           <form onSubmit={handleSubmit}>
             <input
               required
