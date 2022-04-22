@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const NavBar = (props) => {
+
   // let authenticatedOptions
   // if (props.user) {
   //   authenticatedOptions = (
@@ -24,7 +25,7 @@ const NavBar = (props) => {
         Log Out
       </Link>
       <Link to="/profile">Edit Profile</Link>
-      <h2>Welcome, {props.user.firstName}!</h2>
+      <h1>Welcome, {props.user.firstName}</h1>
     </div>
   )
 }

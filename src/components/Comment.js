@@ -137,7 +137,7 @@ const Comment = (props) => {
       </div>
       {props.user.id === props.authorId && canEdit ? (
         <button
-          className="UpdateButton"
+          className="UpdateCommentButton"
           onClick={(e) => {
             updateCommentHandleChange(e)
             toggleEdit(false)

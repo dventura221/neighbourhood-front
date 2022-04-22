@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GetStreets } from '../services/PostServices'
-import { gAPI } from '../globals'
+import { gAPI, tAPI } from '../globals'
 import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
@@ -15,6 +15,7 @@ const StreetFeed = (props) => {
   const [count, setCount] = useState(10000)
   const [streetCount, setStreetCount] = useState(10000)
   const [newsArticles, setNewsArticles] = useState([])
+  // const [weatherStats, setWeatherStats] = useState([])
 
   useEffect(() => {
     const getStreetsAndNews = async () => {
@@ -65,15 +66,19 @@ const StreetFeed = (props) => {
       </div>
       <div className="RightBar">
         <div>
-          {newsArticles.map((article) => (
-            <NewsCard
-              key={article.title}
-              title={article.title}
-              description={article.description}
-              image={article.urlToImage}
-              url={article.url}
-            />
-          ))}
+          {newsArticles.map(
+            (article, idx) =>
+              idx < 5 && (
+                <NewsCard
+                  key={article.title}
+                  title={article.title}
+                  description={article.description}
+                  image={article.urlToImage}
+                  url={article.url}
+                  source={article.source.name}
+                />
+              )
+          )}
         </div>
       </div>
     </div>
