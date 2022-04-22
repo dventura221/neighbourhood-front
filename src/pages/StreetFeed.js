@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GetStreets } from '../services/PostServices'
-import { gAPI } from '../globals'
+import { gAPI, tAPI } from '../globals'
 import NavBar from '../components/NavBar'
 import StreetPost from '../components/StreetPost'
 import StreetForm from '../components/StreetForm'
@@ -14,19 +14,35 @@ const StreetFeed = (props) => {
   const [count, setCount] = useState(10000)
   const [streetCount, setStreetCount] = useState(10000)
   const [newsArticles, setNewsArticles] = useState([])
+  // const [weatherStats, setWeatherStats] = useState([])
 
   useEffect(() => {
-    const getStreetsAndNews = async () => {
+    const getAllCalls = async () => {
       const results = await GetStreets()
       props.setAllStreets(results)
 
       let response = await axios.get(
         `https://newsapi.org/v2/top-headlines?country=us&apiKey=${gAPI}`
       )
-      console.log(response.data.articles)
+      // console.log(response.data.articles)
       setNewsArticles(response.data.articles)
+
+      const fields = [
+        'temperature',
+        'windDirection',
+        'precipitationProbability',
+        'sunriseTime',
+        'sunsetTime',
+        'moonPhase',
+        'uvIndex'
+      ]
+
+      let weatherRes = await axios.get(
+        `https://api.tomorrow.io/v4/timelines?location=35.5950581%2C-82.5514869&fields=temperature&timesteps=1h&apikey=${tAPI}`
+      )
+      console.log(weatherRes)
     }
-    getStreetsAndNews()
+    getAllCalls()
   }, [count, streetCount])
 
   return props.user ? (
@@ -64,15 +80,19 @@ const StreetFeed = (props) => {
       </div>
       <div className="RightBar">
         <div>
-          {newsArticles.map((article) => (
-            <NewsCard
-              key={article.title}
-              title={article.title}
-              description={article.description}
-              image={article.urlToImage}
-              url={article.url}
-            />
-          ))}
+          {newsArticles.map(
+            (article, idx) =>
+              idx < 5 && (
+                <NewsCard
+                  key={article.title}
+                  title={article.title}
+                  description={article.description}
+                  image={article.urlToImage}
+                  url={article.url}
+                  source={article.source.name}
+                />
+              )
+          )}
         </div>
       </div>
     </div>

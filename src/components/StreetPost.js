@@ -154,7 +154,7 @@ const StreetPost = (props) => {
         </div>
         <div
           className="EditStreet"
-          id="FeedContent"
+          id="EditContent"
           contentEditable={
             canEdit && props.user.id === props.authorId ? true : null
           }
@@ -165,14 +165,14 @@ const StreetPost = (props) => {
         <div className="UpdateButtonContainer">
           {props.user.id === props.authorId && canEdit ? (
             <button
-              className="UpdateButton"
+              className="UpdatePostButton"
               onClick={(e) => {
                 updateStreetHandleChange(e)
                 // changeFocus()
                 toggleEdit(false)
               }}
             >
-              Post
+              Update
             </button>
           ) : null}
         </div>
