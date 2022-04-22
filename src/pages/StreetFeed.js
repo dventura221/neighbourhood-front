@@ -68,7 +68,7 @@ const StreetFeed = (props) => {
         <div>
           {newsArticles.map(
             (article, idx) =>
-              idx < 5 && (
+              idx < 15 && (
                 <NewsCard
                   key={article.title}
                   title={article.title}
