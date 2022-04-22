@@ -6,6 +6,11 @@ import Axios from 'axios'
 export const BASE_URL = 'https://neighbourhoodbackend.herokuapp.com'
 // Heroku URL
 
+// export let BASE_URL =
+//   process.env.NODE_ENV === 'production'
+//     ? 'https://neighbourhoodbackend.herokuapp.com'
+//     : 'http://localhost:3001'
+
 const Client = Axios.create({ baseURL: BASE_URL })
 
 // Intercepts every request axios makes

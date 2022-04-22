@@ -10,12 +10,10 @@ import WeatherCard from '../components/WeatherCard'
 import axios from 'axios'
 
 const StreetFeed = (props) => {
-  // const { uuid } = require('uuidv4')
   let navigate = useNavigate()
   const [count, setCount] = useState(10000)
   const [streetCount, setStreetCount] = useState(10000)
   const [newsArticles, setNewsArticles] = useState([])
-  // const [weatherStats, setWeatherStats] = useState([])
 
   useEffect(() => {
     const getStreetsAndNews = async () => {
@@ -61,6 +59,7 @@ const StreetFeed = (props) => {
             avatar={street.User.avatar}
             created={street.createdAt}
             edited={street.isEdited}
+            updated={street.updatedAt}
           />
         ))}
       </div>

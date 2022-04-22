@@ -7,7 +7,6 @@ import Client from '../services/api'
 import { BASE_URL } from '../services/api'
 
 const Comment = (props) => {
-  // const inputRef = useRef()
   const [isClicked, setClicked] = useState(false)
   const [canEdit, toggleEdit] = useState(false)
   const [saltCount, setSaltCount] = useState(10000)
@@ -175,12 +174,10 @@ const Comment = (props) => {
         )}
         <div className="Timestamp">
           <span id="Timestamp">
-            &nbsp;{new Date(props.created).toLocaleString()}
-          </span>
-        </div>
-        <div className="CommentEdited">
-          <span id="Edited">
-            &nbsp;{props.edited == true ? 'Edited' : null}
+            &nbsp;
+            {props.edited == false
+              ? new Date(props.created).toLocaleString()
+              : new Date(props.updated).toLocaleString()}
           </span>
         </div>
       </div>

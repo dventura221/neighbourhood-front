@@ -13,7 +13,6 @@ const WeatherCard = () => {
         `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${wAPI}&units=imperial`
       )
       setWeather(weatherResults.data)
-      console.log(weatherResults.data)
     }
     getWeather()
   }, [zip])
