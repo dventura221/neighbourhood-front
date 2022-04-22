@@ -290,6 +290,16 @@
   align-items: start;
 }
 
+.EditStreetAlt {
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  border-radius: 10px;
+  grid-area: d;
+  align-items: start;
+  border: gray solid 1px;
+}
+
 #EditContent {
   padding-top: 3.5px;
 }
@@ -384,6 +394,14 @@
     align-items: start;
     border-radius: 10px;
   }
+
+.EditCommentAlt {
+  width: 95%;
+  grid-area: d;
+  align-items: start;
+  border-radius: 10px;
+  border: gray solid 1px;
+}
 
 .UpdateButtonContainer {
     grid-area: f;

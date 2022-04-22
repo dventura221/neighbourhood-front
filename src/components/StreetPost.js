@@ -158,7 +158,7 @@ const StreetPost = (props) => {
           ) : null}
         </div>
         <div
-          className="EditStreet"
+          className={!canEdit ? 'EditStreet' : 'EditStreetAlt'}
           id="EditContent"
           contentEditable={
             canEdit && props.user.id === props.authorId ? true : null

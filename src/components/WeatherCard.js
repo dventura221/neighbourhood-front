@@ -70,18 +70,19 @@ const WeatherCard = () => {
           {new Date(weather.sys.sunset * 1000).toLocaleString()}
         </p>
         <div className="WeatherSearch">
-        <div>
-          <form onSubmit={handleSubmit}>
-            <input
-              required
-              type="number"
-              name="zip"
-              value={zipForm}
-              placeholder="Weather by Zipcode"
-              onChange={(e) => setZipForm(e.target.value)}
-            ></input>
-            <button>Submit</button>
-          </form>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <input
+                required
+                type="number"
+                name="zip"
+                value={zipForm}
+                placeholder="Weather by Zipcode"
+                onChange={(e) => setZipForm(e.target.value)}
+              ></input>
+              <button>Submit</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
