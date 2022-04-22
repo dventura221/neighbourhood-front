@@ -210,7 +210,7 @@ const StreetPost = (props) => {
             onClick={displayComments}
             color={howManyComments > 0 ? green : black}
           />
-          <span>
+          <span id="PostEdited">
             &nbsp;
             {props.edited == false
               ? new Date(props.created).toLocaleString()
