@@ -20,11 +20,9 @@ const StreetFeed = (props) => {
     const getStreetsAndNews = async () => {
       const results = await GetStreets()
       props.setAllStreets(results)
-
       let response = await axios.get(
         `https://newsapi.org/v2/top-headlines?country=us&apiKey=${gAPI}`
       )
-      //console.log(response.data.articles)
       setNewsArticles(response.data.articles)
     }
     getStreetsAndNews()
@@ -60,6 +58,8 @@ const StreetFeed = (props) => {
             streetCount={streetCount}
             setStreetCount={setStreetCount}
             avatar={street.User.avatar}
+            created={street.User.createdAt}
+            edited={street.isEdited}
           />
         ))}
       </div>
